@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "53f5bf66fa6a87daacaeaa948a4b91b4",
+    "revision": "ea3235fd40a0bb8a7f2776d29be7c9b2",
     "url": "/piccup/index.html"
   },
   {
-    "revision": "afcc7d3e52b2d911594f",
+    "revision": "05a29cf2007ab72bb221",
     "url": "/piccup/static/css/main.ef8c080a.chunk.css"
   },
   {
@@ -16,15 +16,15 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/piccup/static/js/2.12253d35.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "afcc7d3e52b2d911594f",
-    "url": "/piccup/static/js/main.2611ee16.chunk.js"
+    "revision": "05a29cf2007ab72bb221",
+    "url": "/piccup/static/js/main.d23c0944.chunk.js"
   },
   {
     "revision": "65dd18c193d9384bb5a8",
     "url": "/piccup/static/js/runtime-main.2bce9208.js"
   },
   {
-    "revision": "4adaf684d9f8ce9ebc3e24cd9227c310",
-    "url": "/piccup/static/media/logo.4adaf684.svg"
+    "revision": "723521b151f2dee495d55246e36b2b07",
+    "url": "/piccup/static/media/logo.723521b1.svg"
   }
 ]);

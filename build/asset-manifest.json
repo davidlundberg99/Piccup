@@ -1,23 +1,23 @@
 {
   "files": {
     "main.css": "/piccup/static/css/main.ef8c080a.chunk.css",
-    "main.js": "/piccup/static/js/main.2611ee16.chunk.js",
-    "main.js.map": "/piccup/static/js/main.2611ee16.chunk.js.map",
+    "main.js": "/piccup/static/js/main.d23c0944.chunk.js",
+    "main.js.map": "/piccup/static/js/main.d23c0944.chunk.js.map",
     "runtime-main.js": "/piccup/static/js/runtime-main.2bce9208.js",
     "runtime-main.js.map": "/piccup/static/js/runtime-main.2bce9208.js.map",
     "static/js/2.12253d35.chunk.js": "/piccup/static/js/2.12253d35.chunk.js",
     "static/js/2.12253d35.chunk.js.map": "/piccup/static/js/2.12253d35.chunk.js.map",
     "index.html": "/piccup/index.html",
-    "precache-manifest.ead333d47b04bb719b9f77a518a3d2e2.js": "/piccup/precache-manifest.ead333d47b04bb719b9f77a518a3d2e2.js",
+    "precache-manifest.5fbb40c8645258620020669d77ebb785.js": "/piccup/precache-manifest.5fbb40c8645258620020669d77ebb785.js",
     "service-worker.js": "/piccup/service-worker.js",
     "static/css/main.ef8c080a.chunk.css.map": "/piccup/static/css/main.ef8c080a.chunk.css.map",
     "static/js/2.12253d35.chunk.js.LICENSE.txt": "/piccup/static/js/2.12253d35.chunk.js.LICENSE.txt",
-    "static/media/logo.svg": "/piccup/static/media/logo.4adaf684.svg"
+    "static/media/logo.svg": "/piccup/static/media/logo.723521b1.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.2bce9208.js",
     "static/js/2.12253d35.chunk.js",
     "static/css/main.ef8c080a.chunk.css",
-    "static/js/main.2611ee16.chunk.js"
+    "static/js/main.d23c0944.chunk.js"
   ]
 }
