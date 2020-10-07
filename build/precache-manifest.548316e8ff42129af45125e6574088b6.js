@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "ea3235fd40a0bb8a7f2776d29be7c9b2",
+    "revision": "3eda068711a86ff7d129964a47dee145",
     "url": "/piccup/index.html"
   },
   {
-    "revision": "05a29cf2007ab72bb221",
+    "revision": "e0828624461a7127a905",
     "url": "/piccup/static/css/main.ef8c080a.chunk.css"
   },
   {
@@ -16,15 +16,15 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/piccup/static/js/2.12253d35.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "05a29cf2007ab72bb221",
-    "url": "/piccup/static/js/main.d23c0944.chunk.js"
+    "revision": "e0828624461a7127a905",
+    "url": "/piccup/static/js/main.75a2993e.chunk.js"
   },
   {
     "revision": "65dd18c193d9384bb5a8",
     "url": "/piccup/static/js/runtime-main.2bce9208.js"
   },
   {
-    "revision": "723521b151f2dee495d55246e36b2b07",
-    "url": "/piccup/static/media/logo.723521b1.svg"
+    "revision": "cadc3d8a76ba2a5265a54d734e3651b3",
+    "url": "/piccup/static/media/logo.cadc3d8a.svg"
   }
 ]);
