@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "3eda068711a86ff7d129964a47dee145",
+    "revision": "57ffe88ec75750fc7eea3141071e68ea",
     "url": "/piccup/index.html"
   },
   {
-    "revision": "e0828624461a7127a905",
-    "url": "/piccup/static/css/main.ef8c080a.chunk.css"
+    "revision": "9f017bc0969a6d7186fd",
+    "url": "/piccup/static/css/main.1d8198de.chunk.css"
   },
   {
-    "revision": "ef8862a6e50c4fcc40e2",
-    "url": "/piccup/static/js/2.12253d35.chunk.js"
+    "revision": "40e336978d5ced092f75",
+    "url": "/piccup/static/js/2.c0bb5d16.chunk.js"
   },
   {
     "revision": "e88a3e95b5364d46e95b35ae8c0dc27d",
-    "url": "/piccup/static/js/2.12253d35.chunk.js.LICENSE.txt"
+    "url": "/piccup/static/js/2.c0bb5d16.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "e0828624461a7127a905",
-    "url": "/piccup/static/js/main.75a2993e.chunk.js"
+    "revision": "9f017bc0969a6d7186fd",
+    "url": "/piccup/static/js/main.8ca06319.chunk.js"
   },
   {
     "revision": "65dd18c193d9384bb5a8",
