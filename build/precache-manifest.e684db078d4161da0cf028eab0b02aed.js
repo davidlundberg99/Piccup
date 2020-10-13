@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "38214b8c28573296e75ff9ef28482244",
+    "revision": "476640881814e095d0bc0f653f6ce801",
     "url": "/piccup/index.html"
   },
   {
