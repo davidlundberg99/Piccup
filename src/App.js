@@ -16,7 +16,7 @@ function App(props) {
           Our site allows you to schedule and register for pickup sports
           game at public parks and facilities in your community.
         </p>
-        <Form/>
+        <Form />
       </body>
     </div>
   );

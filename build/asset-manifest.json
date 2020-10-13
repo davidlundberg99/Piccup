@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/piccup/static/css/main.1d8198de.chunk.css",
-    "main.js": "/piccup/static/js/main.8ca06319.chunk.js",
-    "main.js.map": "/piccup/static/js/main.8ca06319.chunk.js.map",
+    "main.js": "/piccup/static/js/main.2d7aa38b.chunk.js",
+    "main.js.map": "/piccup/static/js/main.2d7aa38b.chunk.js.map",
     "runtime-main.js": "/piccup/static/js/runtime-main.2bce9208.js",
     "runtime-main.js.map": "/piccup/static/js/runtime-main.2bce9208.js.map",
     "static/js/2.c0bb5d16.chunk.js": "/piccup/static/js/2.c0bb5d16.chunk.js",
     "static/js/2.c0bb5d16.chunk.js.map": "/piccup/static/js/2.c0bb5d16.chunk.js.map",
     "index.html": "/piccup/index.html",
-    "precache-manifest.f6c0b2e0501e3848419e0d39496534c4.js": "/piccup/precache-manifest.f6c0b2e0501e3848419e0d39496534c4.js",
+    "precache-manifest.300f35a551c8d2facc5276b2042d8851.js": "/piccup/precache-manifest.300f35a551c8d2facc5276b2042d8851.js",
     "service-worker.js": "/piccup/service-worker.js",
     "static/css/main.1d8198de.chunk.css.map": "/piccup/static/css/main.1d8198de.chunk.css.map",
     "static/js/2.c0bb5d16.chunk.js.LICENSE.txt": "/piccup/static/js/2.c0bb5d16.chunk.js.LICENSE.txt",
@@ -18,6 +18,6 @@
     "static/js/runtime-main.2bce9208.js",
     "static/js/2.c0bb5d16.chunk.js",
     "static/css/main.1d8198de.chunk.css",
-    "static/js/main.8ca06319.chunk.js"
+    "static/js/main.2d7aa38b.chunk.js"
   ]
 }

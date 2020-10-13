@@ -26,10 +26,6 @@ class Form extends React.Component {
     }
   
     handleSubmit(event) {
-      alert(this.state["skillSelect"] + " " + this.state["sportSelect"] + " Game Posted!\n" +
-      this.state["gameDate"] + " at " + this.state["gameTime"] + '\n'+
-      this.state["location"] + '\n'
-      + this.state["numPlayers"] + " players");
       event.preventDefault();
     }
   

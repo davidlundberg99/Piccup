@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "57ffe88ec75750fc7eea3141071e68ea",
+    "revision": "38214b8c28573296e75ff9ef28482244",
     "url": "/piccup/index.html"
   },
   {
-    "revision": "9f017bc0969a6d7186fd",
+    "revision": "2917d8ae4296ff1c357d",
     "url": "/piccup/static/css/main.1d8198de.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/piccup/static/js/2.c0bb5d16.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "9f017bc0969a6d7186fd",
-    "url": "/piccup/static/js/main.8ca06319.chunk.js"
+    "revision": "2917d8ae4296ff1c357d",
+    "url": "/piccup/static/js/main.2d7aa38b.chunk.js"
   },
   {
     "revision": "65dd18c193d9384bb5a8",
