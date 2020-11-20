@@ -23,8 +23,6 @@ const renderLoginForm = function() {
     <hr class="login-hr">
     <p class="subtitle has-text-white">Please login to enter Piccup</p>
     <div class="box">
-        <div class="box">
-        </div>
         <div class="subtitle has-text-grey">Please enter your email and password.</div>
         <form>
             <div class="field" id="email-box">
@@ -54,27 +52,24 @@ const renderLoginForm = function() {
 //<button class="button is-danger is-block is-fullwidth is-large" id="login-button">Login</button>
     //Create login Button
     let button_container = loginForm.getElementsByClassName('login')[0];
-    let login_button = document.createElement('button');
+    let login_button = document.createElement('a');
     login_button.className = "button is-danger is-block is-fullwidth is-large login-button";
+    login_button.href="homepage.html"
     login_button.innerHTML=`Login`;
     button_container.appendChild(login_button);
     //Handle Login Button
     loginForm.getElementsByClassName('login-button')[0].addEventListener('click', function() {
-        handleLoginButton();
     })
     return loginForm;
 }
 
-const handleLoginButton = function () {
-    location.href="homepage.html"
-
-}
 
 const loadIntoDom = function () {
-    $("#login-container").append(renderLoginForm());
+   $("#login-container").append(renderLoginForm());
    // $("#login").on('click', '#login-button', handleLoginButton);
+
 }
 
 $(function() {
     loadIntoDom();
-})
+});
