@@ -5,3 +5,8 @@
 #login {
     margin-top: 20px;
 }
+#logo {
+    height: 10vmin;
+    display: block;
+    margin: auto;
+}

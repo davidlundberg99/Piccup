@@ -1,7 +1,7 @@
 {
   "name": "piccup",
   "version": "1.0.0",
-  "description": "",
+  "description": "Piccup is a web-based platform for sharing and joining pick-up sports games at local public parks and facilities.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
