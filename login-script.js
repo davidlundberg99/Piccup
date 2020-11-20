@@ -57,12 +57,26 @@ const renderLoginForm = function() {
     login_button.href="homepage.html"
     login_button.innerHTML=`Login`;
     button_container.appendChild(login_button);
+    let sign_up_button = document.createElement('button');
+    sign_up_button.className = "button is-primary is-block is-fullwidth is-large signup-button";
+    sign_up_button.innerHTML="Sign up"
+    button_container.appendChild(sign_up_button);
     //Handle Login Button
     loginForm.getElementsByClassName('login-button')[0].addEventListener('click', function() {
+    })
+    loginForm.getElementsByClassName('signup-button')[0].addEventListener('click', () => {
+
     })
     return loginForm;
 }
 
+const handleSignUpButton = function () {
+
+}
+
+const renderSignUpForm = function () {
+    
+}
 
 const loadIntoDom = function () {
    $("#login-container").append(renderLoginForm());

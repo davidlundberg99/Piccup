@@ -10,3 +10,6 @@
     display: block;
     margin: auto;
 }
+.login-button {
+    margin-bottom: 6px;
+}
