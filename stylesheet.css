@@ -13,3 +13,13 @@
 .login-button {
     margin-bottom: 6px;
 }
+
+#game-form-container {
+    vertical-align: center;
+}
+
+#game-form {
+    line-height: 20px; 
+    display: inline-block;
+    vertical-align: middle;
+}
