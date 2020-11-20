@@ -4,35 +4,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Piccup</title>
+    <title>Piccup Login Page</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css" />
     <link rel="stylesheet" href="stylesheet.css" />
 </head>
-    <body id="root">
-        <section class="hero is-primary is-bold" id="header">
+    <!--figure out how the background color will cover the whole screen-->
+    <body id="root" style="background-image: linear-gradient(to right,#008470,#00d1b2)">
+        <section class="hero is-bold" id="header">
             <nav class="navbar">
                 <div class="container">
                     <div class="navbar-brand">
                         <a class="navbar-item">
                             <!--Add logo-->
-                        </a>    
+                            <img src="" id="logo"/>
+                        </a>   
                     </div>
                 </div>
             </nav>
-        <div class="hero-body is-small">
-            <div class="container">
-                <img src="./logo.svg" id="logo"/>
-            </div>
-        </div>
-        <!--Welcome message and Login Box-->
-        <div class="container" id="login-container"></div>
-    </section>
-    <!--Login-->
-            <div class="hero is-primary is-bold">
-                <div class="hero-body">
+            <div class="hero-body is-small">
+                <div class="container">
+                    <img src="./logo.svg" id="logo"/>
                 </div>
             </div>
-        
+        <!--Welcome message and Login Box-->
+        <div class="container has-text-centered" id="login-container">
+        </div>
+    </section>
 <!--Scripts-->
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="login-script.js"></script>
