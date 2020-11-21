@@ -1,3 +1,5 @@
+import {renderGameForm} from "./game-form-script.js";
+
 const renderFilterBar = function () {
     let filter_form = document.createElement('div');
     filter_form.classList.add("container");
@@ -115,7 +117,7 @@ const handleFilterApplyButton = function () {
 
 const loadIntoDom = function () {
     $("#filter-container").append(renderFilterBar());
- 
+    $("#game-form-container").append(renderGameForm());
  }
  
  $(function() {
