@@ -40,7 +40,7 @@ export const renderGameForm = function() {
       <option value="intermediate">Intermediate</option>
       <option value="expert">Expert</option>
     </select><br>
-    <input class="button is-rounded submit-buttom" type="submit" name="Submit" />
+    <input class="button is-block submit-button" type="submit" name="Submit" />
   </form>
 `;
     return gameForm;

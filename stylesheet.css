@@ -20,14 +20,23 @@ html {
 
 #game-form-container {
     vertical-align: center;
+    align-items: center;
     font-size: calc(10px + 1vmin);
     margin: 20px 120px;
+}
+#game-form-button {
+    align-self: center;
+    width: 100%;
+    margin-top: 10px;
+    resize: vertical;
+    margin-bottom: 10px;
+    font-size: calc(10px + 1vmin);
 }
 
 
 input[type=submit] {
     align-self: center;
-    width: 75%;
+    width: 100%;
     margin-top: 10px;
     resize: vertical;
     margin-bottom: 10px;

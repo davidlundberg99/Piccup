@@ -1,5 +1,27 @@
 import {renderGameForm} from "./game-form-script.js";
 
+const renderGameFormButton = function() {
+    let game_form_button = document.createElement('button');
+    game_form_button.id = "game-form-button";
+    game_form_button.className = "button is-block is-primary";
+    game_form_button.innerHTML = `Create Post`;
+    return game_form_button;
+}
+
+const handleGameFormButton = function(event) {
+    event.preventDefault();
+    $("#game-form").toggle();
+    if($("#game-form-button").html() == "Create Post"){
+        $("#game-form-button").removeClass("is-primary");
+        $("#game-form-button").addClass("is-danger");
+        $("#game-form-button").html("Cancel Post");
+    } else {
+        $("#game-form-button").html("Create Post");
+        $("#game-form-button").removeClass("is-danger");
+        $("#game-form-button").addClass("is-primary");
+    }
+}
+
 const renderFilterBar = function () {
     let filter_form = document.createElement('div');
     filter_form.classList.add("container");
@@ -111,6 +133,9 @@ const renderFilterBar = function () {
 const loadIntoDom = function () {
     $("#filter-container").append(renderFilterBar());
     $("#game-form-container").append(renderGameForm());
+    $("#game-form-container").append(renderGameFormButton());
+    $("#game-form").hide();
+    $(document).on("click", "#game-form-button", handleGameFormButton);
  }
  
  $(function() {
