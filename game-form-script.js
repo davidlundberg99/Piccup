@@ -40,7 +40,7 @@ export const renderGameForm = function() {
       <option value="intermediate">Intermediate</option>
       <option value="expert">Expert</option>
     </select><br>
-    <input class="button is-rounded submit-buttom" type="submit" name="Submit" />
+    <input class="button is-block submit-button" type="submit" name="Submit" />
   </form>
 `;
     return gameForm;
@@ -48,6 +48,8 @@ export const renderGameForm = function() {
 
 export const renderGamePost = function (post) {
     return `<div class='card'>
+    <div class='card-header'>
+
     <p>${post.name} ${post.location}  ${post.date}</p>
     </div>`
 }
