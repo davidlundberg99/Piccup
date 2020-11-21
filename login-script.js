@@ -90,11 +90,8 @@ const renderSignUpForm = function () {
     sign_up_form.innerHTML=`
     <div class = "modal-background"></div>
     <div class = "modal-content">
-        <div class = "box">
-        <div class = "content">
-        <p class = "title is-4 has-text-centered sign-up-title">Sign up
-            <button class="delete close-button"></button>
-        </p>
+    <div class = "content">
+        <p class = "title is-4 has-text-white has-text-centered">Sign up</p>
     </div>
     <form>
         <div class="field" id="signup-email">
@@ -111,8 +108,6 @@ const renderSignUpForm = function () {
             <div class="control sign-up-buttons"></div>
         </div> 
     </form>
-        <div>
-    
 </div>
 `
     let button_container = sign_up_form.getElementsByClassName("sign-up-buttons")[0];
@@ -128,9 +123,7 @@ const renderSignUpForm = function () {
     sign_up_form.getElementsByClassName('submit-button')[0].addEventListener('click', function () {
         let new_email = sign_up_form.getElementsByClassName("input")[0].value;
         let new_password = sign_up_form.getElementsByClassName("input")[1].value;
-        handleSignUpSubmitButton(new_email, new_password);
-
-
+        handleSignUpSubmitButton(new_email, new_password, sign_up_form);
     })
     sign_up_form.getElementsByClassName('clear-button')[0].addEventListener('click', function () {
         sign_up_form.getElementsByClassName("input")[0].value = '';
@@ -139,8 +132,9 @@ const renderSignUpForm = function () {
     return sign_up_form;
 }
 
-const handleSignUpSubmitButton = function (email, password) {
-    
+const handleSignUpSubmitButton = function (email, password, form) {
+    form.remove();
+    saveUsers(email, password);
 }
 const loadIntoDom = function () {
    $("#login-container").append(renderLoginForm());
@@ -162,17 +156,19 @@ function getInputVal(id){
 function saveUsers(email, password){
     firebase.auth().createUserWithEmailAndPassword(email, password);
 }
-// let ranOnce = false;
-// firebase.auth().onAuthStateChanged((user) => {
-//     if(user && !ranOnce) {
-//         let uid = user.uid;
-//         ranOnce = true;
-//         window.location.href='/';
-//     } else {
-//         console.log('somethings wrong');
-//     }
-// })
+let ranOnce = false;
+firebase.auth().onAuthStateChanged((user) => {
+    if(user && !ranOnce) {
+        let uid = user.uid;
+        ranOnce = true;
+        window.location.href='/homepage.html';
+    } else {
+        console.log('somethings wrong');
+    }
+})
 
 $(function() {
     loadIntoDom();
 });
+
+
