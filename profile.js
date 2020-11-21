@@ -14,7 +14,6 @@ const renderProfile = function () {
                     </div>
                     <div class="media-content">
                         <p class="title is-3 has-text-primary">First Last</p>
-                        <p class="subtitle is-6">Username</p>
                     </div>
                 </div>
             </div>

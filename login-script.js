@@ -24,8 +24,7 @@ const renderLoginForm = function() {
     <div class="container" id="welcome-message">
             <article class="message">
                 <div class="message-header">
-                  <h1 class = "is-size-4">Welcome To Piccup</h1>
-                  <button class="delete" aria-label="delete"></button>
+                  <h1 class = "is-size-4 header-message">Welcome To Piccup</h1>
                 </div>
                 <div class="message-body">
                     Love to play sports but can’t commit to the schedule of an organized league?
@@ -186,7 +185,7 @@ firebase.auth().onAuthStateChanged((user) => {
     if(user && !ranOnce) {
         let uid = user.uid;
         ranOnce = true;
-        window.location.href='/homepage.html';
+        window.location.href='./homepage.html';
     } else {
         console.log('somethings wrong');
     }
