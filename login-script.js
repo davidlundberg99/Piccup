@@ -63,9 +63,6 @@ const renderLoginForm = function() {
     loginForm.getElementsByClassName('signup-button')[0].addEventListener('click', function () {
         $("#root").append(renderSignUpForm);
     })
-    // loginForm.getElementsByClassName('signup-button')[0].addEventListener('click', () => {
-    //     $("#root").append(renderSignUpForm);
-    // })
     return loginForm;
 }
 
@@ -100,16 +97,11 @@ const renderSignUpForm = function () {
     submit_button.className = "button is-primary submit-button is-medium";
     submit_button.innerHTML = "Submit";
     button_container.appendChild(submit_button);
-    // sign_up_form.getElementsByClassName("submit-button")[0].addEventListener('click', () => {
-
-    // })
-
     return sign_up_form;
 }
 
 const loadIntoDom = function () {
    $("#login-container").append(renderLoginForm());
-   //$("#root").append(renderSignUpForm);
 
 }
 
