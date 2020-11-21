@@ -41,3 +41,8 @@ input[type=text], input[type=number], input[type=date], input[type=time], select
   margin-bottom: 10px;
   font-size: calc(10px + 1vmin);
 }
+
+.apply-button {
+    margin-left: 5px;
+    margin-right: 4px;
+}

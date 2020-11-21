@@ -106,6 +106,7 @@ const renderSignUpForm = function () {
         let new_password = sign_up_form.getElementsByClassName("input")[1].value;
         handleSignUpSubmitButton(new_email, new_password);
 
+
     })
     sign_up_form.getElementsByClassName('clear-button')[0].addEventListener('click', function () {
         sign_up_form.getElementsByClassName("input")[0].value = '';
@@ -115,7 +116,7 @@ const renderSignUpForm = function () {
 }
 
 const handleSignUpSubmitButton = function (email, password) {
-
+    
 }
 const loadIntoDom = function () {
    $("#login-container").append(renderLoginForm());

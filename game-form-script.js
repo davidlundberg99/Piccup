@@ -8,7 +8,7 @@ var gamePost = {
     skillSelect: "",
 };
 
-const renderGameForm = function() {
+export const renderGameForm = function() {
     let gameForm = document.createElement('div');
     gameForm.classList.add("container");
     gameForm.classList.add("has-text-centered");
@@ -46,7 +46,7 @@ const renderGameForm = function() {
     return gameForm;
 }
 
-const renderGamePost = function (post) {
+export const renderGamePost = function (post) {
     return `<div class='card'>
     <div class='card-header'>
 
@@ -54,7 +54,7 @@ const renderGamePost = function (post) {
     </div>`
 }
 
-const handleFormSubmit = function (event) {
+export const handleGameFormSubmit = function (event) {
     event.preventDefault();
     gamePost.name = $("#game-form").serializeArray()[0].value;
     gamePost.location = $("#game-form").serializeArray()[1].value;
@@ -63,18 +63,17 @@ const handleFormSubmit = function (event) {
     gamePost.sportSelect = $('#game-form').serializeArray()[4].value;
     gamePost.numPlayers = $("#game-form").serializeArray()[5].value;
     gamePost.skillSelect = $("#game-form").serializeArray()[6].value;
-    postToFeed(gamePost);
 }
 
-const loadIntoDom = function () {
-    $("#game-form-container").append(renderGameForm());
-    $(document).on("submit", "form", handleFormSubmit);
-}
+// const loadIntoDom = function () {
+//     $("#game-form-container").append(renderGameForm());
+//     $(document).on("submit", "form", handleGameFormSubmit);
+// }
 
-const postToFeed = (post) => {
-    $('#feed').append(renderGamePost(post));
-}
+// const postToFeed = (post) => {
+//     $('#feed').append(renderGamePost(post));
+// }
 
-$(function() {
-    loadIntoDom();
-});
+// $(function() {
+//     loadIntoDom();
+// });
