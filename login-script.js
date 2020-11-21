@@ -148,6 +148,8 @@ const renderSignUpForm = function () {
     sign_up_form.getElementsByClassName('clear-button')[0].addEventListener('click', function () {
         sign_up_form.getElementsByClassName("input")[0].value = '';
         sign_up_form.getElementsByClassName("input")[1].value = '';
+        sign_up_form.getElementsByClassName("input")[2].value = '';
+        sign_up_form.getElementsByClassName("input")[3].value = '';
     })
     sign_up_form.getElementsByClassName('close-button')[0].addEventListener('click', () => {
         sign_up_form.remove();

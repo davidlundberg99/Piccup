@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css" />
     <link rel="stylesheet" href="stylesheet.css" />
 </head>
-<body style="background-image: linear-gradient(to right,#008470,#00d1b2)">
+<body id="root" style="background-image: linear-gradient(to right,#008470,#00d1b2)">
     <section class="hero is-bold" id="header">
         <nav class="navbar">
             <div class="container">
@@ -25,8 +25,11 @@
                 <img src="./logo.svg" id="logo"/>
             </div>
         </div>
+        <section>
+            <div class = "container" id="profile-container"></div>
+        </section>
     </section>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="./home-page.js" type = "module"></script>
+    <script src="./profile.js" type = "module"></script>
     <script src="https://kit.fontawesome.com/aa1d5476ca.js" crossorigin="anonymous"></script>
 </body>
