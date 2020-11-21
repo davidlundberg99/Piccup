@@ -48,6 +48,8 @@ const renderGameForm = function() {
 
 const renderGamePost = function (post) {
     return `<div class='card'>
+    <div class='card-header'>
+
     <p>${post.name} ${post.location}  ${post.date}</p>
     </div>`
 }
