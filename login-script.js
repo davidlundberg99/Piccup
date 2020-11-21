@@ -90,8 +90,12 @@ const renderSignUpForm = function () {
     sign_up_form.innerHTML=`
     <div class = "modal-background"></div>
     <div class = "modal-content">
-    <div class = "content">
-        <p class = "title is-4 has-text-white has-text-centered">Sign up</p>
+    <div class = "modal-content">
+        <div class = "box">
+        <div class = "content">
+        <p class = "title is-4 has-text-centered sign-up-header">Sign up
+            <button class="delete close-button"></button>
+        </p>
     </div>
     <form>
         <div class="field" id="signup-email">

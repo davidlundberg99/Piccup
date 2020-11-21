@@ -101,11 +101,18 @@ const renderFilterBar = function () {
     clear_button.className = "button is-clear clear-button";
     clear_button.innerHTML=`Clear`;
     button_container.appendChild(clear_button);
-
-
     //TODO: Handle button presses
-   
+    filter_form.getElementsByClassName('apply-button')[0].addEventListener('click', () => {
+        handleFilterApplyButton();
+    })
+    filter_form.getElementsByClassName('clear-button')[0].addEventListener('click', () => {
+        
+    })
     return filter_form;
+}
+
+const handleFilterApplyButton = function () {
+    alert("Apply button was pressed");
 }
 
 const loadIntoDom = function () {
