@@ -123,13 +123,9 @@ const renderSignUpForm = function () {
     sign_up_form.getElementsByClassName('submit-button')[0].addEventListener('click', function () {
         let new_email = sign_up_form.getElementsByClassName("input")[0].value;
         let new_password = sign_up_form.getElementsByClassName("input")[1].value;
-<<<<<<< HEAD
-        handleSignUpSubmitButton(new_email, new_password, sign_up_form);
-=======
         handleSignUpSubmitButton(new_email, new_password);
 
 
->>>>>>> 3c42f649cfb46498ed47ec340027b9d9f24798fb
     })
     sign_up_form.getElementsByClassName('clear-button')[0].addEventListener('click', function () {
         sign_up_form.getElementsByClassName("input")[0].value = '';
@@ -138,14 +134,8 @@ const renderSignUpForm = function () {
     return sign_up_form;
 }
 
-<<<<<<< HEAD
-const handleSignUpSubmitButton = function (email, password, form) {
-    form.remove();
-    saveUsers(email, password);
-=======
 const handleSignUpSubmitButton = function (email, password) {
     
->>>>>>> 3c42f649cfb46498ed47ec340027b9d9f24798fb
 }
 const loadIntoDom = function () {
    $("#login-container").append(renderLoginForm());
