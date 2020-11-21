@@ -62,25 +62,45 @@ const renderLoginForm = function() {
     sign_up_button.innerHTML="Sign up"
     button_container.appendChild(sign_up_button);
     //Handle Login Button
-    loginForm.getElementsByClassName('login-button')[0].addEventListener('click', function() {
-    })
     loginForm.getElementsByClassName('signup-button')[0].addEventListener('click', () => {
-
+        handleSignUpButton();
     })
     return loginForm;
 }
 
 const handleSignUpButton = function () {
-
+    //console.log("button was pressed")
+    $("#root").append(renderSignUpForm());
 }
 
 const renderSignUpForm = function () {
-    
+    let sign_up_form = document.createElement('div');
+    sign_up_form.className = 'modal is-active';
+    sign_up_form.innerHTML=`
+    <div class = "modal-background"></div>
+    <div class = "modal-content">
+    <div class = "content">
+        <p class = "title is-4">Sign up</p>
+    </div>
+    <form>
+        <div class="field" id="signup-email">
+            <div class="control">
+                <input class="input is-medium" type="email" placeholder="johnsmith@gmail.com" id="email">
+            </div>
+        </div>
+        <div class="field" id="signup-password-box">
+            <div class="control">
+                <input class="input is-medium" type="password" placeholder="Password" id="password">
+            </div>
+        </div>
+    </form>
+</div>
+`
+    return sign_up_form;
 }
 
 const loadIntoDom = function () {
    $("#login-container").append(renderLoginForm());
-   // $("#login").on('click', '#login-button', handleLoginButton);
 
 }
 
