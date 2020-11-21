@@ -31,8 +31,9 @@ const renderGameForm = function() {
       <option value="intermediate">Intermediate</option>
       <option value="expert">Expert</option>
     </select><br>
-    <input type="submit" name="Submit" />
-  </form>`;
+    <input class="button is-rounded" type="submit" name="Submit" />
+  </form>
+`;
     return gameForm;
 }
 
