@@ -27,12 +27,12 @@ const renderLoginForm = function() {
         <form>
             <div class="field" id="email-box">
                 <div class="control">
-                    <input class="input is-medium" type="email" placeholder="johnsmith@gmail.com" id="email">
+                    <input class="input is-medium" type="email"placeholder="johnsmith@gmail.com" id="email">
                 </div>
             </div>
             <div class="field" id="password-box">
                 <div class="control">
-                    <input class="input is-medium" type="password" placeholder="Password" id="password">
+                    <input class="input is-medium" type="password"placeholder="Password" id="password">
                 </div>
             </div>
         </form>
@@ -40,13 +40,10 @@ const renderLoginForm = function() {
             <input type="checkbox" id="remember-me-checkbox">
             Remember me
         </label>
-        <form>
          <div class="field">
-            <div class="control login">
+            <div class="control login" id="signup">
             </div>
-        
             </div>
-        </form>
     </div>
 </div>`
 //<button class="button is-danger is-block is-fullwidth is-large" id="login-button">Login</button>
@@ -57,20 +54,19 @@ const renderLoginForm = function() {
     login_button.href="homepage.html"
     login_button.innerHTML=`Login`;
     button_container.appendChild(login_button);
+    //Sign up button
     let sign_up_button = document.createElement('button');
     sign_up_button.className = "button is-primary is-block is-fullwidth is-large signup-button";
     sign_up_button.innerHTML="Sign up"
     button_container.appendChild(sign_up_button);
     //Handle Login Button
-    loginForm.getElementsByClassName('signup-button')[0].addEventListener('click', () => {
-        handleSignUpButton();
+    loginForm.getElementsByClassName('signup-button')[0].addEventListener('click', function () {
+        $("#root").append(renderSignUpForm);
     })
+    // loginForm.getElementsByClassName('signup-button')[0].addEventListener('click', () => {
+    //     $("#root").append(renderSignUpForm);
+    // })
     return loginForm;
-}
-
-const handleSignUpButton = function () {
-    //console.log("button was pressed")
-    $("#root").append(renderSignUpForm());
 }
 
 const renderSignUpForm = function () {
@@ -85,22 +81,35 @@ const renderSignUpForm = function () {
     <form>
         <div class="field" id="signup-email">
             <div class="control">
-                <input class="input is-medium" type="email" placeholder="johnsmith@gmail.com" id="email">
+                <input class="input is-medium" placeholder="johnsmith@gmail.com" >
             </div>
         </div>
         <div class="field" id="signup-password-box">
             <div class="control">
-                <input class="input is-medium" type="password" placeholder="Password" id="password">
+                <input class="input is-medium" placeholder="Password">
             </div>
         </div>
+        <div class="field is-grouped">
+            <div class="control sign-up-buttons"></div>
+        </div> 
     </form>
 </div>
 `
+    let button_container = sign_up_form.getElementsByClassName("sign-up-buttons")[0];
+    let submit_button = document.createElement('div');
+    submit_button.className = "button is-primary submit-button is-medium";
+    submit_button.innerHTML = "Submit";
+    button_container.appendChild(submit_button);
+    // sign_up_form.getElementsByClassName("submit-button")[0].addEventListener('click', () => {
+
+    // })
+
     return sign_up_form;
 }
 
 const loadIntoDom = function () {
    $("#login-container").append(renderLoginForm());
+   //$("#root").append(renderSignUpForm);
 
 }
 
