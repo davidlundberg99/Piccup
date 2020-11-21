@@ -55,3 +55,6 @@ input[type=text], input[type=number], input[type=date], input[type=time], select
     margin-left: 5px;
     margin-right: 4px;
 }
+.close-button {
+    position: relative; left: 260px; bottom: 15px;
+}
