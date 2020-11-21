@@ -72,8 +72,11 @@ const renderSignUpForm = function () {
     sign_up_form.innerHTML=`
     <div class = "modal-background"></div>
     <div class = "modal-content">
-    <div class = "content">
-        <p class = "title is-4 has-text-white has-text-centered">Sign up</p>
+        <div class = "box">
+        <div class = "content">
+        <p class = "title is-4 has-text-centered sign-up-title">Sign up
+            <button class="delete close-button"></button>
+        </p>
     </div>
     <form>
         <div class="field" id="signup-email">
@@ -90,6 +93,8 @@ const renderSignUpForm = function () {
             <div class="control sign-up-buttons"></div>
         </div> 
     </form>
+        <div>
+    
 </div>
 `
     let button_container = sign_up_form.getElementsByClassName("sign-up-buttons")[0];
