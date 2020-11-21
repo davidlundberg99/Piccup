@@ -43,11 +43,13 @@ const renderLoginForm = function() {
         <form>
             <div class="field" id="email-box">
                 <div class="control">
+                    <label class="subtitle">Email:</label>
                     <input class="input is-medium" type="email"placeholder="johnsmith@gmail.com" id="email">
                 </div>
             </div>
             <div class="field" id="password-box">
                 <div class="control">
+                    <label class="subtitle">Password:</label>
                     <input class="input is-medium" type="password"placeholder="Password" id="password">
                 </div>
             </div>
@@ -98,13 +100,27 @@ const renderSignUpForm = function () {
         </p>
     </div>
     <form>
+        <div class="field" id="first-name">
+            <div class="control">
+                <label class="subtitle">First Name:</label>
+                <input class="input is-medium" placeholder="John" >
+            </div>
+        </div>
+        <div class="field" id="last-name">
+            <div class="control">
+                <label class="subtitle">Last Name:</label>
+                <input class="input is-medium" placeholder="Smith" >
+            </div>
+        </div>
         <div class="field" id="signup-email">
             <div class="control">
+                <label class="subtitle">Email:</label>
                 <input class="input is-medium" placeholder="johnsmith@gmail.com" >
             </div>
         </div>
         <div class="field" id="signup-password-box">
             <div class="control">
+                <label class="subtitle">Password:</label>
                 <input class="input is-medium" placeholder="Password">
             </div>
         </div>
@@ -132,6 +148,9 @@ const renderSignUpForm = function () {
     sign_up_form.getElementsByClassName('clear-button')[0].addEventListener('click', function () {
         sign_up_form.getElementsByClassName("input")[0].value = '';
         sign_up_form.getElementsByClassName("input")[1].value = '';
+    })
+    sign_up_form.getElementsByClassName('close-button')[0].addEventListener('click', () => {
+        sign_up_form.remove();
     })
     return sign_up_form;
 }
