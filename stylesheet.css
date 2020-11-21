@@ -24,11 +24,6 @@ html {
     margin: 20px 120px;
 }
 
-#game-form {
-    line-height: 40px; 
-    display: inline-block;
-    vertical-align: middle;
-}
 
 input[type=submit] {
     align-self: center;
