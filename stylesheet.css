@@ -1,3 +1,7 @@
+html {
+    background: linear-gradient(to right,#008470,#00d1b2);
+}
+
 #welcome-message {
     margin-top: 4px;
     margin-bottom: 20;
@@ -16,14 +20,29 @@
 
 #game-form-container {
     vertical-align: center;
+    font-size: calc(10px + 1vmin);
+    margin: 20px 120px;
 }
 
-#game-form {
-    line-height: 20px; 
-    display: inline-block;
-    vertical-align: middle;
+
+input[type=submit] {
+    align-self: center;
+    width: 75%;
+    margin-top: 10px;
+    resize: vertical;
+    margin-bottom: 10px;
+    font-size: calc(10px + 1vmin);
+  }
+  
+input[type=text], input[type=number], input[type=date], input[type=time], select, textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: calc(10px + 1vmin);
 }
 
-.submit-button {
+.apply-button {
+    margin-left: 5px;
     margin-right: 4px;
 }
