@@ -20,14 +20,24 @@ html {
 
 #game-form-container {
     vertical-align: center;
+    font-size: calc(10px + 1vmin);
 }
 
 #game-form {
-    line-height: 20px; 
+    line-height: 40px; 
     display: inline-block;
     vertical-align: middle;
+    width: auto;
 }
 
 .submit-button {
     margin-right: 4px;
+}
+
+input[type=text], input[type=number], input[type=date], input[type=time], select, textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: calc(10px + 1vmin);
 }

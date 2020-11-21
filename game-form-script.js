@@ -3,8 +3,7 @@ const renderGameForm = function() {
     let gameForm = document.createElement('div');
     gameForm.classList.add("container");
     gameForm.classList.add("has-text-centered");
-    gameForm.innerHTML=`<div class="box">
-    <form class="game-form">
+    gameForm.innerHTML=`<form class="game-form">
     <h2>Post a Game</h2>
     <input type="text" name="name" placeholder="Name" /><br>
     <input type="text" name="location" placeholder="Location" /><br>
@@ -33,8 +32,7 @@ const renderGameForm = function() {
       <option value="expert">Expert</option>
     </select><br>
     <input type="submit" name="Submit" />
-  </form>
-  </div>`;
+  </form>`;
     return gameForm;
 }
 
