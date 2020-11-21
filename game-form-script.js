@@ -12,7 +12,7 @@ export const renderGameForm = function() {
     let gameForm = document.createElement('div');
     gameForm.classList.add("container");
     gameForm.classList.add("has-text-centered");
-    gameForm.innerHTML=`<form id="game-form">
+    gameForm.innerHTML=`<form id="game-form" class="box">
     <h2>Post a Game</h2>
     <input type="text" name="name" placeholder="Name" /><br>
     <input type="text" name="location" placeholder="Location" /><br>
@@ -40,7 +40,7 @@ export const renderGameForm = function() {
       <option value="intermediate">Intermediate</option>
       <option value="expert">Expert</option>
     </select><br>
-    <input class="button is-block submit-button" type="submit" name="Submit" />
+    <input class="button is-block submit-button is-primary" type="submit" name="Submit" />
   </form>
 `;
     return gameForm;
@@ -63,6 +63,7 @@ export const handleGameFormSubmit = function (event) {
     gamePost.sportSelect = $('#game-form').serializeArray()[4].value;
     gamePost.numPlayers = $("#game-form").serializeArray()[5].value;
     gamePost.skillSelect = $("#game-form").serializeArray()[6].value;
+    console.log("Hello");
 }
 
 // const loadIntoDom = function () {

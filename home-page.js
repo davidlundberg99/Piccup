@@ -1,9 +1,9 @@
-import {renderGameForm} from "./game-form-script.js";
+import {renderGameForm, handleGameFormSubmit} from "./game-form-script.js";
 
 const renderGameFormButton = function() {
     let game_form_button = document.createElement('button');
     game_form_button.id = "game-form-button";
-    game_form_button.className = "button is-block is-primary";
+    game_form_button.className = "button is-block is-primary is-inverted";
     game_form_button.innerHTML = `Create Post`;
     return game_form_button;
 }
@@ -12,13 +12,13 @@ const handleGameFormButton = function(event) {
     event.preventDefault();
     $("#game-form").toggle();
     if($("#game-form-button").html() == "Create Post"){
-        $("#game-form-button").removeClass("is-primary");
+        $("#game-form-button").removeClass("is-primary is-inverted");
         $("#game-form-button").addClass("is-danger");
         $("#game-form-button").html("Cancel Post");
     } else {
         $("#game-form-button").html("Create Post");
         $("#game-form-button").removeClass("is-danger");
-        $("#game-form-button").addClass("is-primary");
+        $("#game-form-button").addClass("is-primary is-inverted");
     }
 }
 
@@ -137,12 +137,34 @@ const handleFilterApplyButton = function () {
     alert("Apply button was pressed");
 }
 
+const dummyCard = `<div class="card">
+<header class="card-header">
+    <p class="title card-header-title">
+        Poster Name's Sport Game: Game Name
+    </p>
+</header>
+<div class="card-content">
+    Location <br>
+    Time <br>
+    Date <br>
+    Players <br>
+    Skill Level <br>
+</div>
+<footer class="card-footer">
+    <a href="#" class="card-footer-item">RSVP</a>
+</footer>
+</div>`
+
 const loadIntoDom = function () {
     $("#filter-container").append(renderFilterBar());
     $("#game-form-container").append(renderGameForm());
     $("#game-form-container").append(renderGameFormButton());
     $("#game-form").hide();
     $(document).on("click", "#game-form-button", handleGameFormButton);
+    $(document).on("submit", "#game-form", handleGameFormSubmit);
+    for(let i=0; i < 5; i++) {
+        $("#feed").append(dummyCard);
+    }
  }
  
  $(function() {
