@@ -1,10 +1,18 @@
+var gamePost = {
+    name: "",
+    location: "",
+    gameDate: new Date().toISOString().substring(0, 10),
+    gameTime: '12:00:00',
+    numPlayers: 0,
+    sportSelect: "",
+    skillSelect: "",
+};
 
 const renderGameForm = function() {
     let gameForm = document.createElement('div');
     gameForm.classList.add("container");
     gameForm.classList.add("has-text-centered");
-    gameForm.innerHTML=`<div class="box">
-    <form class="game-form">
+    gameForm.innerHTML=`<form id="game-form">
     <h2>Post a Game</h2>
     <input type="text" name="name" placeholder="Name" /><br>
     <input type="text" name="location" placeholder="Location" /><br>
@@ -32,18 +40,37 @@ const renderGameForm = function() {
       <option value="intermediate">Intermediate</option>
       <option value="expert">Expert</option>
     </select><br>
-    <input type="submit" name="Submit" />
+    <input class="button is-rounded submit-buttom" type="submit" name="Submit" />
   </form>
-  </div>`;
+`;
     return gameForm;
 }
 
-const handleFormSubmit = function () {
+const renderGamePost = function (post) {
+    return `<div class='card'>
+    <p>${post.name} ${post.location}  ${post.date}</p>
+    </div>`
+}
 
+const handleFormSubmit = function (event) {
+    event.preventDefault();
+    gamePost.name = $("#game-form").serializeArray()[0].value;
+    gamePost.location = $("#game-form").serializeArray()[1].value;
+    gamePost.gameDate = $("#game-form").serializeArray()[2].value;
+    gamePost.gameTime = $("#game-form").serializeArray()[3].value;
+    gamePost.sportSelect = $('#game-form').serializeArray()[4].value;
+    gamePost.numPlayers = $("#game-form").serializeArray()[5].value;
+    gamePost.skillSelect = $("#game-form").serializeArray()[6].value;
+    postToFeed(gamePost);
 }
 
 const loadIntoDom = function () {
     $("#game-form-container").append(renderGameForm());
+    $(document).on("submit", "form", handleFormSubmit);
+}
+
+const postToFeed = (post) => {
+    $('#feed').append(renderGamePost(post));
 }
 
 $(function() {

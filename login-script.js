@@ -74,7 +74,7 @@ const renderSignUpForm = function () {
     <div class = "modal-content">
         <div class = "box">
         <div class = "content">
-        <p class = "title is-4 has-text-centered sign-up-title">Sign up
+        <p class = "title is-4 has-text-centered sign-up-header">Sign up
             <button class="delete close-button"></button>
         </p>
     </div>
@@ -106,6 +106,12 @@ const renderSignUpForm = function () {
     clear_button.className = "button is-clear clear-button is-medium";
     clear_button.innerHTML = "Clear";
     button_container.appendChild(clear_button);
+    // let close_container = sign_up_form.getElementsByClassName("sign-up-header");
+    // let close_button = document.createElement('div');
+    // close_button.className = "button";
+    sign_up_form.getElementsByClassName('close-button')[0].addEventListener('click', () => {
+            sign_up_form.remove();
+    })
     sign_up_form.getElementsByClassName('submit-button')[0].addEventListener('click', function () {
         let new_email = sign_up_form.getElementsByClassName("input")[0].value;
         let new_password = sign_up_form.getElementsByClassName("input")[1].value;
