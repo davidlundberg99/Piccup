@@ -1,3 +1,7 @@
+html {
+    background: linear-gradient(to right,#008470,#00d1b2);
+}
+
 #welcome-message {
     margin-top: 4px;
     margin-bottom: 20;
