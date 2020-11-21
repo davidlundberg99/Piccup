@@ -73,7 +73,7 @@ const renderSignUpForm = function () {
     <div class = "modal-background"></div>
     <div class = "modal-content">
     <div class = "content">
-        <p class = "title is-4">Sign up</p>
+        <p class = "title is-4 has-text-white has-text-centered">Sign up</p>
     </div>
     <form>
         <div class="field" id="signup-email">
@@ -97,9 +97,26 @@ const renderSignUpForm = function () {
     submit_button.className = "button is-primary submit-button is-medium";
     submit_button.innerHTML = "Submit";
     button_container.appendChild(submit_button);
+    let clear_button = document.createElement('div');
+    clear_button.className = "button is-clear clear-button is-medium";
+    clear_button.innerHTML = "Clear";
+    button_container.appendChild(clear_button);
+    sign_up_form.getElementsByClassName('submit-button')[0].addEventListener('click', function () {
+        let new_email = sign_up_form.getElementsByClassName("input")[0].value;
+        let new_password = sign_up_form.getElementsByClassName("input")[1].value;
+        handleSignUpSubmitButton(new_email, new_password);
+
+    })
+    sign_up_form.getElementsByClassName('clear-button')[0].addEventListener('click', function () {
+        sign_up_form.getElementsByClassName("input")[0].value = '';
+        sign_up_form.getElementsByClassName("input")[1].value = '';
+    })
     return sign_up_form;
 }
 
+const handleSignUpSubmitButton = function (email, password) {
+
+}
 const loadIntoDom = function () {
    $("#login-container").append(renderLoginForm());
 

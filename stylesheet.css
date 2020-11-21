@@ -23,3 +23,7 @@
     display: inline-block;
     vertical-align: middle;
 }
+
+.submit-button {
+    margin-right: 4px;
+}
