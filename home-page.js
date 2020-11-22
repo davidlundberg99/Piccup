@@ -1,4 +1,4 @@
-import {renderGameForm, handleGameFormSubmit} from "./game-form-script.js";
+import {renderGameForm, handleGameFormSubmit, renderGamePost} from "./game-form-script.js";
 
 const renderGameFormButton = function() {
     let game_form_button = document.createElement('button');
@@ -135,39 +135,21 @@ const handleFilterApplyButton = function () {
     alert("Apply button was pressed");
 }
 
-const dummyCard = `<div class="card">
-<header class="card-header">
-    <p class="title card-header-title">
-        <span>
-        <a>Sam Lempp </a> <br>
-        Football Game: Sunday Night Football
-        </span>
-    </p>
-</header>
-<div class="card-content is-size-3">
-    <strong> Location:  </strong> Hargraves Park<br> 
-    <strong>Time: </strong>  12:00 pm <br>
-    <strong>Date: </strong> November 21st, 2020 <br>
-    <strong>Players: </strong> 10 <br>
-    <strong>Skill Level: </strong> Beginner <br>
-</div>
-<footer class="card-footer">
-    <button class="button is-primary card-footer-item is-size-3">Join Game</button>
-</footer>
-</div>`
-
-const loadIntoDom = function () {
+const loadIntoDom = function (gameData) {
     $("#filter-container").append(renderFilterBar());
     $("#game-form-container").append(renderGameForm());
     $("#game-form-container").append(renderGameFormButton());
     $("#game-form").hide();
     $(document).on("click", "#game-form-button", handleGameFormButton);
     $(document).on("submit", "#game-form", handleGameFormSubmit);
-    for(let i=0; i < 5; i++) {
-        $("#feed").append(dummyCard);
+    
+
+    $("#no-games-message").toggle();
+    for(let i=0; i < gameData.length; i++) {
+        $("#feed").append(renderGamePost(gameData[i]));
     }
  }
  
  $(function() {
-     loadIntoDom();
+     loadIntoDom(dummyGames);
  });

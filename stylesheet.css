@@ -54,13 +54,14 @@ input[type=text], input[type=number], input[type=date], input[type=time], select
 }
 
 #filter-container {
-    width: 100vmin;
+    width: 99vmin;
     margin: auto;
     text-align: center;
 }
 
-#feed {
-    margin: 10px;
+
+.game-card {
+    margin: 20px;
 }
 
 .dd-button, .dropdown, .dropdown-trigger {
@@ -74,5 +75,8 @@ input[type=text], input[type=number], input[type=date], input[type=time], select
 }
 .close-button {
     position: relative; left: 260px; bottom: 15px;
+}
+.card-header {
+    padding: 20px 20px 0px;
 }
 
