@@ -27,13 +27,12 @@ const renderFilterBar = function () {
     filter_form.classList.add("container");
    // filter_form.classList.add("has-text-centered");
     filter_form.innerHTML = `
-        <div class="box">
-            <div class="subtitle has-text-grey is-4 has-text-centered">Filter</div>
+            <div class="subtitle has-text-grey is-3 has-text-centered">Filter</div>
             <div class="dropdown">
                 <div class="dropdown is-hoverable">
                     <div class="dropdown-trigger">
-                        <button class="button" aria-haspopup="true" aria-controls="dropdown-menu4">
-                            <span>Which sport would you like to search a game for?</span>
+                        <button class="button dd-button" aria-haspopup="true" aria-controls="dropdown-menu4">
+                            <span>Select Sport</span>
                             <span class="icon is-small">
                             <i class="fas fa-angle-down"></i>
                             </span>
@@ -60,8 +59,8 @@ const renderFilterBar = function () {
             <div class="dropdown">
                 <div class="dropdown is-hoverable">
                     <div class="dropdown-trigger">
-                        <button class="button" aria-haspopup="true" aria-controls="dropdown-menu4">
-                            <span>Beginner, intermediate, or advanced?</span>
+                        <button class="button dd-button" aria-haspopup="true" aria-controls="dropdown-menu4">
+                            <span>Select Skill Level</span>
                             <span class="icon is-small">
                                 <i class="fas fa-angle-down" aria-hidden="true"></i>
                             </span>
@@ -85,8 +84,8 @@ const renderFilterBar = function () {
             <div class="dropdown">
                 <div class="dropdown is-hoverable">
                     <div class="dropdown-trigger">
-                        <button class="button" aria-haspopup="true" aria-controls="dropdown-menu4">
-                            <span>What time would you like to play at?</span>
+                        <button class="button dd-button" aria-haspopup="true" aria-controls="dropdown-menu4">
+                            <span>Time</span>
                             <span class="icon is-small">
                                 <i class="fas fa-angle-down" aria-hidden="true"></i>
                             </span>
@@ -111,7 +110,6 @@ const renderFilterBar = function () {
                 </div>
             </div>
             </div>
-        </div>
     `
     //Create buttons and apend them
     let button_container = filter_form.getElementsByClassName('apply')[0];
@@ -140,18 +138,21 @@ const handleFilterApplyButton = function () {
 const dummyCard = `<div class="card">
 <header class="card-header">
     <p class="title card-header-title">
-        Poster Name's Sport Game: Game Name
+        <span>
+        <a>Sam Lempp </a> <br>
+        Football Game: Sunday Night Football
+        </span>
     </p>
 </header>
-<div class="card-content">
-    Location <br>
-    Time <br>
-    Date <br>
-    Players <br>
-    Skill Level <br>
+<div class="card-content is-size-3">
+    <strong> Location:  </strong> Hargraves Park<br> 
+    <strong>Time: </strong>  12:00 pm <br>
+    <strong>Date: </strong> November 21st, 2020 <br>
+    <strong>Players: </strong> 10 <br>
+    <strong>Skill Level: </strong> Beginner <br>
 </div>
 <footer class="card-footer">
-    <a href="#" class="card-footer-item">RSVP</a>
+    <button class="button is-primary card-footer-item is-size-3">Join Game</button>
 </footer>
 </div>`
 

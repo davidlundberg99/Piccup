@@ -19,10 +19,9 @@ html {
 }
 
 #game-form-container {
-    vertical-align: center;
     align-items: center;
     font-size: calc(10px + 1vmin);
-    margin: 20px 20px;
+    margin: 0px 20px;
 }
 #game-form-button {
     align-self: center;
@@ -46,7 +45,7 @@ input[type=submit] {
     font-size: calc(10px + 1vmin);
   }
   
-input[type=text], input[type=number], input[type=date], input[type=time], select, textarea {
+input[type=text], input[type=number], input[type=date], input[type=time], select, textarea{
   width: 100%;
   padding: 10px;
   margin-top: 10px;
@@ -54,14 +53,26 @@ input[type=text], input[type=number], input[type=date], input[type=time], select
   font-size: calc(10px + 1vmin);
 }
 
-.apply-button {
+#filter-container {
+    width: 100vmin;
+    margin: auto;
+    text-align: center;
+}
+
+#feed {
+    margin: 10px;
+}
+
+.dd-button, .dropdown, .dropdown-trigger {
+    font-size: 25px;
+}
+
+.apply-button, .clear-button {
     margin-left: 5px;
     margin-right: 4px;
+    font-size: 25px;
 }
 .close-button {
     position: relative; left: 260px; bottom: 15px;
 }
 
-#card-header-content {
-    font-size: medium;
-}

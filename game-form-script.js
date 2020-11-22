@@ -10,7 +10,6 @@ var gamePost = {
 
 export const renderGameForm = function() {
     let gameForm = document.createElement('div');
-    gameForm.classList.add("container");
     gameForm.classList.add("has-text-centered");
     gameForm.innerHTML=`<form id="game-form" class="box">
     <h2>Post a Game</h2>
