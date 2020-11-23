@@ -1,12 +1,28 @@
-var gamePost = {
-    name: "",
-    location: "",
-    gameDate: new Date().toISOString().substring(0, 10),
-    gameTime: '12:00:00',
-    numPlayers: 0,
-    sportSelect: "",
-    skillSelect: "",
+var firebaseConfig = {
+  apiKey: "AIzaSyB71fFfvD1D85MLOw7HhNknoLjCP55Gu5s",
+  authDomain: "piccup-f339d.firebaseapp.com",
+  databaseURL: "https://piccup-f339d.firebaseio.com",
+  projectId: "piccup-f339d",
+  storageBucket: "piccup-f339d.appspot.com",
+  messagingSenderId: "1042044087440",
+  appId: "1:1042044087440:web:0e3885ce7ef972f83c3c15",
+  measurementId: "G-TKHRW9XMW2"
 };
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+
+const gamesCollection = firebase.firestore().collection('games')
+
+
+// var gamePost = {
+//     name: "",
+//     location: "",
+//     gameDate: new Date().toISOString().substring(0, 10),
+//     gameTime: '12:00:00',
+//     numPlayers: 0,
+//     sportSelect: "",
+//     skillSelect: "",
+// };
 
 export const renderGameForm = function() {
     let gameForm = document.createElement('div');
@@ -25,18 +41,18 @@ export const renderGameForm = function() {
     </label><br>
     <select name="sportSelect">
       <option value="" disabled selected>Select Sport</option>
-      <option value="baseball">Baseball</option>
-      <option value="basketball">Basketball</option>
-      <option value="football">Football</option>
-      <option value="soccer">Soccer</option>
-      <option value="tennis">Tennis</option>
-      <option value="volleyball">Volleyball</option>
+      <option value=Baseball">Baseball</option>
+      <option value="Basketball">Basketball</option>
+      <option value="Football">Football</option>
+      <option value="Soccer">Soccer</option>
+      <option value="Tennis">Tennis</option>
+      <option value="Volleyball">Volleyball</option>
     </select><br>
     <input type="number" name="numPlayers" placeholder="Number of players" /><br>
     <select name="skillSelect">
       <option value="" disabled selected>Select Skill Level</option>
       <option value="beginner">Beginner</option>
-      <option value="intermediate">Intermediate</option>
+      <option value="Intermediate">Intermediate</option>
       <option value="expert">Expert</option>
     </select><br>
     <input class="button is-block submit-button is-primary" type="submit" name="Submit" />
@@ -48,6 +64,7 @@ export const renderGameForm = function() {
 
 export const handleGameFormSubmit = function (event) {
     event.preventDefault();
+    const gamePost = {}
     gamePost.name = $("#game-form").serializeArray()[0].value;
     gamePost.location = $("#game-form").serializeArray()[1].value;
     gamePost.gameDate = new Date($("#game-form").serializeArray()[2].value);
@@ -55,10 +72,11 @@ export const handleGameFormSubmit = function (event) {
     gamePost.sportSelect = $('#game-form').serializeArray()[4].value;
     gamePost.numPlayers = $("#game-form").serializeArray()[5].value;
     gamePost.skillSelect = $("#game-form").serializeArray()[6].value;
-    if($("#no-games-message").is(':visible')) {
-        $("#no-games-message").toggle();
-    }
+    // if($("#no-games-message").is(':visible')) {
+    //     $("#no-games-message").toggle();
+    // }
     $('#feed').prepend(renderGamePost(gamePost));
+    gamesCollection.add(gamePost);
 }
 
 export const renderGamePost = function (post) {
