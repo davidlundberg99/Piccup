@@ -306,6 +306,10 @@ function reloadPage(){
 
 const loadIntoDom = function (bio) {
     // $("#profile-container").append(renderProfile(bio));
+    $(".navbar-burger").on("click", function() {
+        $(".navbar-burger").toggleClass("is-active");
+        $(".navbar-menu").toggleClass("is-active");
+        });
  }
  
  $(function() {

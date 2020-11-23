@@ -188,7 +188,6 @@ const handleSignUpSubmitButton = async function (email, password, first_name, la
 
 const loadIntoDom = function () {
    $("#login-container").append(renderLoginForm());
-
 }
 
 // function submitUser(){
