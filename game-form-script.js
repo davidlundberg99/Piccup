@@ -71,11 +71,11 @@ export const renderGamePost = function (post) {
         <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
         </figure>
         <p class="card-header-title">
-            <span>
-            <a>Sam Lempp </a> <br>
-            ${sportName} Game: ${post.name}
+            <span >
+            <a>Sam Lempp </a><br>
+            <span class=""><strong>${sportName} Game: ${post.name}</strong></span><br>
             </span>
-        </p><br>
+        </p>
         <figure class="image is-48x48">
         <img src="./sport-logos/${post.sportSelect}.png" alt="Placeholder image">
         </figure>
@@ -88,7 +88,7 @@ export const renderGamePost = function (post) {
         <strong>Skill Level: </strong> ${skillLevel} <br>
     </div>
     <footer class="card-footer">
-        <button class="button is-primary card-footer-item is-size-8">Join Game</button>
+        <button class="button is-primary card-footer-item is-size-">Join Game</button>
     </footer>
     </div>`
     }
