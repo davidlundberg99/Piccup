@@ -108,8 +108,7 @@ const renderFilterBar = function () {
     //TODO: Handle button presses
     filter_form.getElementsByClassName('apply-button')[0].addEventListener('click', () => {
         let time = filter_form.getElementsByClassName('input')[0].value;
-        console.log(time);
-        handleFilterApplyButton();
+        handleFilterApplyButton(time);
     })
     filter_form.getElementsByClassName('clear-button')[0].addEventListener('click', () => {
         
