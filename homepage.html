@@ -25,9 +25,9 @@
             <a class= "navbar-item" href ="./profile.html">
                 <p>My Profile</p>
             </a>
-            <a class= "navbar-item has-text-white has-background-danger" href ="./">
+            <button class= "navbar-item has-text-white has-background-danger" id="log-out-button" >
                 Log Out
-            </a>
+            </button>
         </div>
     </div>
     </nav>
@@ -42,14 +42,17 @@
         </section>
         <div class="columns" id="homepage-columns">
             <div class="column">
-                <div class="box" id="feed">
+                <!-- <div class="box" id="feed">
                     <p class="subtitle is-4" id="no-games-message">No games available... try posting your own!</p>
-                </div>
+                </div> -->
             </div>
             <div class="column is-narrow has-text-centered" id="game-form-container">
             </div>
         </div>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-auth.js"></script>
 <script src="./home-page.js" type = "module"></script>
 <script src="./data.js"></script>
 <script src="https://kit.fontawesome.com/aa1d5476ca.js" crossorigin="anonymous"></script>
