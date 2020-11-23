@@ -41,7 +41,7 @@ export const renderGameForm = function() {
     </label><br>
     <select name="sportSelect">
       <option value="" disabled selected>Select Sport</option>
-      <option value=Baseball">Baseball</option>
+      <option value="Baseball">Baseball</option>
       <option value="Basketball">Basketball</option>
       <option value="Football">Football</option>
       <option value="Soccer">Soccer</option>
@@ -55,28 +55,26 @@ export const renderGameForm = function() {
       <option value="Intermediate">Intermediate</option>
       <option value="expert">Expert</option>
     </select><br>
-    <input class="button is-block submit-button is-primary" type="submit" name="Submit" />
+    <input class="button is-block submit-button is-primary" type="submit" name="Submit" onSubmit="handleGameFormSubmit()"/>
   </form>
 `;
     return gameForm;
 }
 
 
-export const handleGameFormSubmit = function (event) {
+export const handleGameFormSubmit = async function (event) {
     event.preventDefault();
+    console.log("submitted");
     const gamePost = {}
     gamePost.name = $("#game-form").serializeArray()[0].value;
     gamePost.location = $("#game-form").serializeArray()[1].value;
-    gamePost.gameDate = new Date($("#game-form").serializeArray()[2].value);
+    gamePost.gameDate = $("#game-form").serializeArray()[2].value;
     gamePost.gameTime = $("#game-form").serializeArray()[3].value;
     gamePost.sportSelect = $('#game-form').serializeArray()[4].value;
     gamePost.numPlayers = $("#game-form").serializeArray()[5].value;
     gamePost.skillSelect = $("#game-form").serializeArray()[6].value;
-    // if($("#no-games-message").is(':visible')) {
-    //     $("#no-games-message").toggle();
-    // }
-    $('#feed').prepend(renderGamePost(gamePost));
-    gamesCollection.add(gamePost);
+    
+    await gamesCollection.add(gamePost);
 }
 
 export const renderGamePost = function (post) {

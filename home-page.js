@@ -153,7 +153,7 @@ const handleLogOutButton = function() {
 
 // renderGames();
 
-const loadIntoDom = async function (gameData) {
+const loadIntoDom = async function () {
     $("#filter-container").append(renderFilterBar());
     $("#game-form-container").append(renderGameForm());
     $("#game-form-container").append(renderGameFormButton());
@@ -161,17 +161,25 @@ const loadIntoDom = async function (gameData) {
     $(document).on("click", "#game-form-button", handleGameFormButton);
     $(document).on("submit", "#game-form", handleGameFormSubmit);
     $(document).on("click", "#log-out-button", handleLogOutButton);
-    const games = await getGames();
+    var games = await gamesCollection.get();
     
     games.forEach(game => {
         const gameData = game.data();
-        const gameTime = gameData.gameTime;
-        const gameDate = new Date(gameData.gameDate);
-        const location = gameData.location;
-        const name = gameData.name;
-        const numPlayers = gameData.numPlayers;
-        const skillSelect = gameData.skillSelect;
-        const sportSelect = gameData.sportSelect;
+        var gamePost = {
+                name: gameData.name,
+                location: gameData.location,
+                gameDate: new Date(gameData.gameDate),
+                gameTime: gameData.gameTime,
+                numPlayers: gameData.numPlayers,
+                sportSelect: gameData.sportSelect,
+                skillSelect: gameData.skillSelect,
+            };
+        $("#feed").append(renderGamePost(gamePost));
+        })
+    if($("#no-games-message").is(':visible')) {
+        $("#no-games-message").toggle();
+    }
+    }
 
     // if(gameData.length > 0) {
     //     $("#no-games-message").toggle();
@@ -188,9 +196,7 @@ const loadIntoDom = async function (gameData) {
 //         $(".navbar-menu").toggleClass("is-active");
 //     });
 //  }
-        $("#feed").append(renderGamePost(gameData));
-        })
-        }
+        
 
         // function renderGames(){
         //     games.forEach(game => {
