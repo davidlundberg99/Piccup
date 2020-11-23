@@ -65,6 +65,7 @@ const renderProfile = function (bio, skill_level, sports) {
 }
 
 const renderErrorEditForm = function () {
+    //console.log("edit form should be rendered")
     let sign_up_form = document.createElement('div');
     sign_up_form.className = 'modal is-active';
     sign_up_form.innerHTML=`
@@ -92,11 +93,12 @@ const renderErrorEditForm = function () {
                 <p class="subtitle sports-label">Add a sport:</p>
                 <div class="select">
                     <select class="my-select">
-                        <option value="Football">Football</option>
-                        <option value="Basketball">Basketball</option>
-                        <option value="Football">Brazil</option>
-                        <option value="Tennis">Chile</option>
-                        <option value="Volleyball">Volleyball</option>
+                    <option value="Football">Football</option>
+                    <option value="Basketball">Basketball</option>
+                    <option value="Football">Soccer</option>
+                    <option value="Tennis">Tennis</option>
+                    <option value="Volleyball">Volleyball</option>
+                    <option value="Volleyball">Tennis</option>
                     </select>
                 </div>
             </div>
@@ -142,6 +144,7 @@ const renderErrorEditForm = function () {
 }
 
 const renderEditProfileForm = function (sports, skill_level, bio) {
+    console.log("button was pressed")
     let sign_up_form = document.createElement('div');
     sign_up_form.className = 'modal is-active';
     sign_up_form.innerHTML=`
@@ -169,7 +172,7 @@ const renderEditProfileForm = function (sports, skill_level, bio) {
                         <option value="Football">Football</option>
                         <option value="Basketball">Basketball</option>
                         <option value="Football">Soccer</option>
-                        <option value="Tennis">Baseball</option>
+                        <option value="Tennis">Tennis</option>
                         <option value="Volleyball">Volleyball</option>
                         <option value="Volleyball">Tennis</option>
                     </select>
@@ -214,6 +217,7 @@ const renderEditProfileForm = function (sports, skill_level, bio) {
     sign_up_form.getElementsByClassName('edit-profile-close-button')[0].addEventListener('click', () => {
         sign_up_form.remove();
     })
+    //console.log("signup form")
     return sign_up_form;
 }
 
