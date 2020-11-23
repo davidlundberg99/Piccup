@@ -50,7 +50,7 @@ input[type=text], input[type=number], input[type=date], input[type=time], select
     position: relative; left: 260px; bottom: 15px;
 }
 
-.bio {
+.bio-container {
     margin-top: 30px;
     position: relative; left: 50px; bottom: 15px;
 }
@@ -95,4 +95,16 @@ input[type=text], input[type=number], input[type=date], input[type=time], select
 
 .header-message {
     position: relative; left: 315px;
+}
+
+.navbar-buttons {
+    position: relative; left: 1200px;
+}
+
+.my-select {
+    position: relative; bottom: 18px;
+}
+
+.sports-label {
+    position: relative; top: 12px;
 }
