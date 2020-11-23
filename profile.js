@@ -1,14 +1,23 @@
-const renderProfile = function (bio, skill_level, sports) {
-    if (bio == null) {
-        bio = "You have not set up a bio yet. If you would like to add a bio, please press the edit profile button."
+var profile = {
+    first_name: "David",
+    last_name: "Lundberg",
+    games_played: "8",
+    skill_level: "Beginner",
+    sports: ["football", "basketball", "soccer"],
+    bio: "I love to play Sports!"
+}
+
+const renderProfile = function (profile) {
+    if (profile.bio == null) {
+        profile.bio = "You have not set up a bio yet. If you would like to add a bio, please press the edit profile button."
     }
-    if (skill_level == undefined) {
-        skill_level = "Beginner"
+    if (profile.skill_level == undefined) {
+        profile.skill_level = "Beginner"
     }
-    if (sports == null) {
-        sports = ""
+    if (profile.sports == null) {
+        profile.sports = ""
     }
-    skill_level = skill_level[0].toUpperCase() + skill_level.slice(1);
+    profile.skill_level = profile.skill_level[0].toUpperCase() + profile.skill_level.slice(1);
     let profile_card = document.createElement('div');
     profile_card.classList.add("container");
     profile_card.innerHTML= `
@@ -23,27 +32,27 @@ const renderProfile = function (bio, skill_level, sports) {
                         </figure>
                     </div>
                     <div class="media-content">
-                        <p class="title is-3 has-text-primary">First Last</p>
+                        <p class="title is-3 has-text-primary">${profile.first_name} <br> ${profile.last_name}</p>
                     </div>
                 </div>
             </div>
             <div class="column profile-column-left has-text-centered">
                 <p class="subtitle">Games played</p>
-                <p class="title is-1 attribute-value">8</p>
+                <p class="title is-1 attribute-value">${profile.games_played}</p>
             </div>
             <div class="column profile-column has-text-centered">
                 <p class="subtitle">Overall Skill Level</p>
-                <p class="title is-4 attribute-value skill-level">${skill_level}</p>
+                <p class="title is-4 attribute-value skill-level">${profile.skill_level}</p>
             </div>
             <div class="column profile-column-right has-text-centered">
                 <p class="subtitle">Sports</p>
-                <p class="title is-4 attribute-value sports">${sports}</p>
+                <p class="title is-4 attribute-value sports">${getSports(profile.sports)}</p>
             </div>
         </div>
         </div>
         <div class="content bio-container">
             <p class="title is-3" id="bio">Bio</p>
-            <p class ="subtitle is-5 bio">${bio}</p>
+            <p class ="subtitle is-5 bio">${profile.bio}</p>
         </div>
         <div class="control edit-button">
 
@@ -59,12 +68,25 @@ const renderProfile = function (bio, skill_level, sports) {
     button_container.append(edit_profile_button)
     //handle edit button press
     profile_card.getElementsByClassName('edit-profile-button')[0].addEventListener('click', () => {
-        $("#root").append(renderEditProfileForm(sports, skill_level, bio));
+        $("#root").append(renderEditProfileForm(profile));
     })
     return profile_card;
 }
+const getSports = function (sports) {
+    let sports_string = "";
+    for (let i = 0; i < sports.length; i++) {
+        let temp = sports[i][0].toUpperCase() + sports[i].slice(1);
+        if (i == 0) {
+            sports_string = temp;
+        } else {
+            sports_string = sports_string + ", " + temp;
+        }
+    }
+    return sports_string;
+}
+console.log(getSports(["football", "basketball", "soccer"]));
 
-const renderErrorEditForm = function () {
+const renderErrorEditForm = function (profile) {
     //console.log("edit form should be rendered")
     let sign_up_form = document.createElement('div');
     sign_up_form.className = 'modal is-active';
@@ -126,10 +148,13 @@ const renderErrorEditForm = function () {
     button_container.appendChild(clear_button);
     
     sign_up_form.getElementsByClassName('submit-button')[0].addEventListener('click', function () {
-        let skill_level = sign_up_form.getElementsByClassName("input")[0].value;
-        let sports = sign_up_form.getElementsByClassName("my-select")[0].value;
-        let bio = sign_up_form.getElementsByClassName("input")[1].value;
-        handleSignUpSubmitButton(skill_level, sports, bio, sign_up_form);
+        profile.skill_level = sign_up_form.getElementsByClassName("input")[0].value;
+        let new_sport = sign_up_form.getElementsByClassName("my-select")[0].value;
+        if (!doesSportExist(profile.sports, new_sport)) {
+            profile.sports.splice(profile.sports.length, 0, new_sport);
+        } 
+        profile.bio = sign_up_form.getElementsByClassName("input")[1].value;
+        handleSignUpSubmitButton(profile, sign_up_form);
     })
     sign_up_form.getElementsByClassName('clear-button')[0].addEventListener('click', function () {
         sign_up_form.getElementsByClassName("input")[0].value = '';
@@ -143,8 +168,8 @@ const renderErrorEditForm = function () {
     return sign_up_form;
 }
 
-const renderEditProfileForm = function (sports, skill_level, bio) {
-    console.log("button was pressed")
+const renderEditProfileForm = function (profile) {
+    //console.log("button was pressed")
     let sign_up_form = document.createElement('div');
     sign_up_form.className = 'modal is-active';
     sign_up_form.innerHTML=`
@@ -202,11 +227,13 @@ const renderEditProfileForm = function (sports, skill_level, bio) {
     button_container.appendChild(clear_button);
     
     sign_up_form.getElementsByClassName('submit-button')[0].addEventListener('click', function () {
-        let skill_level = sign_up_form.getElementsByClassName("input")[0].value;
-        let sports = sign_up_form.getElementsByClassName("my-select")[0].value;
-        let bio = sign_up_form.getElementsByClassName("input")[1].value;
-        console.log(sports)
-        handleSignUpSubmitButton(skill_level, sports, bio, sign_up_form);
+        profile.skill_level = sign_up_form.getElementsByClassName("input")[0].value;
+        let new_sport = sign_up_form.getElementsByClassName("my-select")[0].value;
+        if (!doesSportExist(profile.sports, new_sport)) {
+            profile.sports.splice(profile.sports.length, 0, new_sport);
+        } 
+        profile.bio = sign_up_form.getElementsByClassName("input")[1].value;
+        handleSignUpSubmitButton(profile, sign_up_form);
     })
     sign_up_form.getElementsByClassName('clear-button')[0].addEventListener('click', function () {
         sign_up_form.getElementsByClassName("input")[0].value = '';
@@ -217,35 +244,43 @@ const renderEditProfileForm = function (sports, skill_level, bio) {
     sign_up_form.getElementsByClassName('edit-profile-close-button')[0].addEventListener('click', () => {
         sign_up_form.remove();
     })
-    //console.log("signup form")
     return sign_up_form;
 }
 
-const updateProfile = function (bio, skill_level, sports) {
+const doesSportExist = function (sports_arr, sport) {
+    for (let i = 0; i < sports_arr.length; i++) {
+        if (sports_arr[i].toLowerCase().localeCompare(sport.toLowerCase()) == 0) {
+            return true;
+        }
+    }
+    return false;
+} 
+
+const updateProfile = function (profile) {
     $("#profile-container").empty()
-    $("#profile-container").append(renderProfile(bio, skill_level, sports));
+    $("#profile-container").append(renderProfile(profile));
 }
 
-const handleSignUpSubmitButton = function (skill_level, sports, bio, form) {
-    if (skill_level.toLowerCase().localeCompare("beginner") == 0) {
-        updateProfile(bio, skill_level, sports);
+const handleSignUpSubmitButton = function (profile, form) {
+    if (profile.skill_level.toLowerCase().localeCompare("beginner") == 0) {
+        updateProfile(profile);
         form.remove();
-    } else if (skill_level.toLowerCase().localeCompare("intermediate") == 0) {
-        updateProfile(bio, skill_level, sports);
+        console.log(profile)
+    } else if (profile.skill_level.toLowerCase().localeCompare("intermediate") == 0) {
+        updateProfile(profile);
         form.remove();
-    } else if (skill_level.toLowerCase().localeCompare("expert") == 0) {
-        updateProfile(bio, skill_level, sports);
+    } else if (profile.skill_level.toLowerCase().localeCompare("expert") == 0) {
+        updateProfile(profile);
         form.remove();
     } else {
         form.remove();
-        $("#root").append(renderErrorEditForm());   
-    }
-    
+        $("#root").append(renderErrorEditForm(profile));   
+    }  
 }
 
 
-const loadIntoDom = function (bio) {
-    $("#profile-container").append(renderProfile(bio));
+const loadIntoDom = function () {
+    $("#profile-container").append(renderProfile(profile));
  }
  
  $(function() {

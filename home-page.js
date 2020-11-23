@@ -27,9 +27,9 @@ const renderFilterBar = function () {
     filter_form.classList.add("container");
    // filter_form.classList.add("has-text-centered");
     filter_form.innerHTML = `
-            <div class="subtitle has-text-grey is-4 has-text-centered">Filter</div>
+            <div class="subtitle has-text-grey is-3 has-text-centered">Filter</div>
             <div class="dropdown">
-                <div class="dropdown is-hoverable">
+                <div class="dropdown is-hoverable filter-dropdown">
                     <div class="dropdown-trigger">
                         <button class="button dd-button" aria-haspopup="true" aria-controls="dropdown-menu4">
                             <span>Select Sport</span>
@@ -40,24 +40,27 @@ const renderFilterBar = function () {
                     </div>
                     <div class="dropdown-menu" id="dropdown-menu4" role="menu">
                         <div class="dropdown-content">
-                            <a href="#" class="dropdown-item">
+                            <a class="dropdown-item option-1">
                                 Football
                             </a>
-                            <a href="#" class="dropdown-item">
+                            <a class="dropdown-item option-2">
                                 Basketball
                             </a>
-                            <a href="#" class="dropdown-item">
+                            <a class="dropdown-item option-3">
                                 Soccer
                             </a>
-                            <a href="#" class="dropdown-item">
+                            <a class="dropdown-item option-4">
                                 Tennis
+                            </a>
+                            <a class="dropdown-item option-3">
+                                Volleyball
                             </a>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="dropdown">
-                <div class="dropdown is-hoverable">
+                <div class="dropdown is-hoverable filter-dropdown">
                     <div class="dropdown-trigger">
                         <button class="button dd-button" aria-haspopup="true" aria-controls="dropdown-menu4">
                             <span>Select Skill Level</span>
@@ -68,42 +71,23 @@ const renderFilterBar = function () {
                     </div>
                     <div class="dropdown-menu" id="dropdown-menu4" role="menu">
                         <div class="dropdown-content">
-                            <a href="#" class="dropdown-item">
-                                10:00am
+                            <a class="dropdown-item filter-skill-1">
+                                Beginner
                             </a>
-                            <a href="#" class="dropdown-item">
-                                10:30am
+                            <a class="dropdown-item filter-skill-2">
+                                Intermediate
                             </a>
-                            <a href="#" class="dropdown-item">
-                                11:00am
+                            <a class="dropdown-item filter-skill-3">
+                                Expert
                             </a>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="dropdown">
-                <div class="dropdown is-hoverable">
-                    <div class="dropdown-trigger">
-                        <button class="button dd-button" aria-haspopup="true" aria-controls="dropdown-menu4">
-                            <span>Time</span>
-                            <span class="icon is-small">
-                                <i class="fas fa-angle-down" aria-hidden="true"></i>
-                            </span>
-                        </button>
-                    </div>
-                    <div class="dropdown-menu" id="dropdown-menu4" role="menu">
-                        <div class="dropdown-content">
-                            <a href="#" class="dropdown-item">
-                                10:00am
-                            </a>
-                            <a href="#" class="dropdown-item">
-                                10:30am
-                            </a>
-                            <a href="#" class="dropdown-item">
-                                11:00am
-                            </a>
-                        </div>
-                    </div>
+            <div class="field" id="filter-time-box">
+                <div class="control">
+                    <label class="subtitle is-5">Start Time:</label>
+                    <input style="width: 125px"class="input filter-time-input" placeholder="ex.)12:00pm">
                 </div>
                 <div class="field is-grouped">
                 <div class="control apply is-grouped"></div>
@@ -123,6 +107,8 @@ const renderFilterBar = function () {
     button_container.appendChild(clear_button);
     //TODO: Handle button presses
     filter_form.getElementsByClassName('apply-button')[0].addEventListener('click', () => {
+        let time = filter_form.getElementsByClassName('input')[0].value;
+        console.log(time);
         handleFilterApplyButton();
     })
     filter_form.getElementsByClassName('clear-button')[0].addEventListener('click', () => {
@@ -151,12 +137,7 @@ const loadIntoDom = function (gameData) {
         for(let i=0; i < gameData.length; i++) {
             $("#feed").append(renderGamePost(gameData[i]));
         }
-    }
-
-    $(".navbar-burger").on("click", function() {
-        $(".navbar-burger").toggleClass("is-active");
-        $(".navbar-menu").toggleClass("is-active");
-    });
+    }   
  }
  
  $(function() {
