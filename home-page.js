@@ -10,7 +10,7 @@ const renderGameFormButton = function() {
 
 const handleGameFormButton = function(event) {
     event.preventDefault();
-    $("#game-form").toggle();
+    $("#game-form").toggle("fast");
     if($("#game-form-button").html() == "Create Post"){
         $("#game-form-button").removeClass("is-primary is-inverted");
         $("#game-form-button").addClass("is-danger");
@@ -143,11 +143,15 @@ const loadIntoDom = function (gameData) {
     $(document).on("click", "#game-form-button", handleGameFormButton);
     $(document).on("submit", "#game-form", handleGameFormSubmit);
     
-
-    $("#no-games-message").toggle();
-    for(let i=0; i < gameData.length; i++) {
-        $("#feed").append(renderGamePost(gameData[i]));
-    }
+    if(gameData.length > 0) {
+        $("#no-games-message").toggle();
+        for(let i=0; i < gameData.length; i++) {
+            $("#feed").append(renderGamePost(gameData[i]));
+        }
+        for(let i=0; i < gameData.length; i++) {
+            $("#feed").append(renderGamePost(gameData[i]));
+        }
+    }   
  }
  
  $(function() {

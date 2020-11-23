@@ -8,27 +8,27 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css" />
     <link rel="stylesheet" href="stylesheet.css" />
 </head>
-<body style="background-image: linear-gradient(to right,#008470,#00d1b2)">
+<body class="has-navbar-fixed-top" style="background-image: linear-gradient(to right,#008470,#00d1b2)">
+    <nav class="navbar has-background-white is-fixed-top">
+        <a href="./homepage.html">
+        <img class="navbar-brand" src="./logo-small.svg"/>
+        </a>
+        <div class="navbar-end">
+            <a class= "navbar-item is-size-4" href ="./profile.html">
+                <p>My Profile</p>
+            </a>
+            <a class= "navbar-item is-size-4 has-text-white has-background-danger" href ="./">
+                Log Out
+            </a>
+        </div>
+    </nav>
     <section class="hero is-bold" id="header">
-        <nav class="navbar">
-            <div class="container">
-                <div class="navbar-brand">
-                    <a class="navbar-item">
-                        <!--Add logo-->
-                        <img src="" id="logo"/>
-                    </a>    
-                </div>
-            </div>
-        </nav>
         <div class="hero-body is-small">
             <div class="container">
                 <img src="./logo.svg" id="logo"/>
             </div>
         </div>
         <section>
-        <a class= "button is-white" href ="./profile.html">
-            Profile
-        </a>
         <div class="box" id="filter-container"></div>
         </section>
         <div class="columns" id="homepage-columns">
@@ -37,7 +37,7 @@
                     <p class="subtitle is-4" id="no-games-message">No games available... try posting your own!</p>
                 </div>
             </div>
-            <div class="column is-one-quarter has-text-centered" id="game-form-container">
+            <div class="column is-narrow has-text-centered" id="game-form-container">
             </div>
         </div>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
