@@ -19,6 +19,7 @@
   "dependencies": {
     "browser-sync": "^2.26.13",
     "bulma": "^0.9.1",
+    "firebase": "^8.1.1",
     "jquery": "^3.5.1"
   }
 }

@@ -13,6 +13,8 @@
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
 
+  const usersCollection = firebase.firestore().collection('users')
+
 
 const renderLoginForm = function() {
    // console.log("attempting to render LoginForm")
@@ -71,10 +73,29 @@ const renderLoginForm = function() {
     let button_container = loginForm.getElementsByClassName('login')[0];
     let login_button = document.createElement('a');
     login_button.className = "button is-danger is-block is-fullwidth is-large login-button";
-    login_button.href="homepage.html"
     login_button.innerHTML=`Login`;
     button_container.appendChild(login_button);
-    //Sign up button
+
+    button_container.getElementsByClassName('login-button')[0].addEventListener('click', function () {
+        let email = loginForm.getElementsByClassName("input")[0].value;
+        let password = loginForm.getElementsByClassName("input")[1].value;
+        handleLoginButton(email, password);
+    })
+
+    function handleLoginButton(email, password) {
+        firebase.auth().signInWithEmailAndPassword(email, password)
+  .then((user) => {   
+    homePage();
+  })
+  .catch((error) => {
+    console.log("Incorrect email or password;")
+    var errorCode = error.code;
+    var errorMessage = error.message;
+  });
+    }
+
+
+    //Create Sign up button
     let sign_up_button = document.createElement('button');
     sign_up_button.className = "button is-primary is-block is-fullwidth is-large signup-button";
     sign_up_button.innerHTML="Sign up"
@@ -141,9 +162,11 @@ const renderSignUpForm = function () {
     button_container.appendChild(clear_button);
     
     sign_up_form.getElementsByClassName('submit-button')[0].addEventListener('click', function () {
-        let new_email = sign_up_form.getElementsByClassName("input")[0].value;
-        let new_password = sign_up_form.getElementsByClassName("input")[1].value;
-        handleSignUpSubmitButton(new_email, new_password, sign_up_form);
+        let first_name = sign_up_form.getElementsByClassName("input")[0].value;
+        let last_name = sign_up_form.getElementsByClassName("input")[1].value;
+        let new_email = sign_up_form.getElementsByClassName("input")[2].value;
+        let new_password = sign_up_form.getElementsByClassName("input")[3].value;
+        handleSignUpSubmitButton(new_email, new_password, first_name, last_name, sign_up_form);
     })
     sign_up_form.getElementsByClassName('clear-button')[0].addEventListener('click', function () {
         sign_up_form.getElementsByClassName("input")[0].value = '';
@@ -155,40 +178,43 @@ const renderSignUpForm = function () {
     return sign_up_form;
 }
 
-const handleSignUpSubmitButton = function (email, password, form) {
+const handleSignUpSubmitButton = async function (email, password, first_name, last_name, form) {
     form.remove();
-    saveUsers(email, password);
+    await saveUsers(email, password, first_name, last_name);
 }
+
 const loadIntoDom = function () {
    $("#login-container").append(renderLoginForm());
 
 }
 
-function submitUser(){
-    var email = getInputVal('signup-email');
-    var password = getInputVal('signup-password-box');
-    console.log(email);
-}
+// function submitUser(){
+//     var email = getInputVal('signup-email');
+//     var password = getInputVal('signup-password-box');
+//     console.log(email);
+// }
 
 function getInputVal(id){
     return document.getElementById(id).value;
 }
 
+function homePage(){
+    window.location.href='./homepage.html'
+}
 
 //Save users to firebase
-function saveUsers(email, password){
-    firebase.auth().createUserWithEmailAndPassword(email, password);
-}
-let ranOnce = false;
-firebase.auth().onAuthStateChanged((user) => {
-    if(user && !ranOnce) {
-        let uid = user.uid;
-        ranOnce = true;
-        window.location.href='/homepage.html';
-    } else {
-        console.log('somethings wrong');
+async function saveUsers(email, password, first_name, last_name){
+   const user = await firebase.auth().createUserWithEmailAndPassword(email, password);
+        console.log("here")
+        const uid = user.uid;
+        console.log(user);
+        const profile = {}
+        profile.firstName = first_name;
+        profile.lastName = last_name;
+        profile.email = email;
+        await usersCollection.doc(uid).set(profile)
+        homePage()
     }
-})
 
 $(function() {
     loadIntoDom();

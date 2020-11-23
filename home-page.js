@@ -1,4 +1,26 @@
-import {renderGameForm, handleGameFormSubmit} from "./game-form-script.js";
+import {renderGameForm, handleGameFormSubmit, renderGamePost} from "./game-form-script.js";
+
+// Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+//   var firebaseConfig = {
+//     apiKey: "AIzaSyB71fFfvD1D85MLOw7HhNknoLjCP55Gu5s",
+//     authDomain: "piccup-f339d.firebaseapp.com",
+//     databaseURL: "https://piccup-f339d.firebaseio.com",
+//     projectId: "piccup-f339d",
+//     storageBucket: "piccup-f339d.appspot.com",
+//     messagingSenderId: "1042044087440",
+//     appId: "1:1042044087440:web:0e3885ce7ef972f83c3c15",
+//     measurementId: "G-TKHRW9XMW2"
+//   };
+//   // Initialize Firebase
+//   firebase.initializeApp(firebaseConfig);
+
+  const gamesCollection = firebase.firestore().collection('games')
+
+  const getGames = async () => {
+      const games = await gamesCollection.get();
+      return games;
+  }
 
 const renderGameFormButton = function() {
     let game_form_button = document.createElement('button');
@@ -135,37 +157,49 @@ const handleFilterApplyButton = function () {
     alert("Apply button was pressed");
 }
 
-const dummyCard = `<div class="card">
-<header class="card-header">
-    <p class="title card-header-title">
-        <span>
-        <a>Sam Lempp </a> <br>
-        Football Game: Sunday Night Football
-        </span>
-    </p>
-</header>
-<div class="card-content is-size-3">
-    <strong> Location:  </strong> Hargraves Park<br> 
-    <strong>Time: </strong>  12:00 pm <br>
-    <strong>Date: </strong> November 21st, 2020 <br>
-    <strong>Players: </strong> 10 <br>
-    <strong>Skill Level: </strong> Beginner <br>
-</div>
-<footer class="card-footer">
-    <button class="button is-primary card-footer-item is-size-3">Join Game</button>
-</footer>
-</div>`
+// const dummyCard = `<div class="card">
+// <header class="card-header">
+//     <p class="title card-header-title">
+//         <span>
+//         <a>Sam Lempp </a> <br>
+//         Football Game: Sunday Night Football
+//         </span>
+//     </p>
+// </header>
+// <div class="card-content is-size-3">
+//     <strong> Location:  </strong> Hargraves Park<br> 
+//     <strong>Time: </strong>  12:00 pm <br>
+//     <strong>Date: </strong> November 21st, 2020 <br>
+//     <strong>Players: </strong> 10 <br>
+//     <strong>Skill Level: </strong> Beginner <br>
+// </div>
+// <footer class="card-footer">
+//     <button class="button is-primary card-footer-item is-size-3">Join Game</button>
+// </footer>
+// </div>`
 
-const loadIntoDom = function () {
+const loadIntoDom = async function () {
     $("#filter-container").append(renderFilterBar());
     $("#game-form-container").append(renderGameForm());
     $("#game-form-container").append(renderGameFormButton());
     $("#game-form").hide();
     $(document).on("click", "#game-form-button", handleGameFormButton);
     $(document).on("submit", "#game-form", handleGameFormSubmit);
-    for(let i=0; i < 5; i++) {
-        $("#feed").append(dummyCard);
-    }
+    const games = await getGames();
+    
+    games.forEach(game => {
+        const gameData = game.data();
+        const gameTime = gameData.gameTime;
+        const gameDate = gameData.gameDate;
+        const location = gameData.location;
+        const name = gameData.name;
+        const numPlayers = gameData.numPlayers;
+        const skillSelect = gameData.skillSelect;
+        const sportSelect = gameData.sportSelect;
+
+
+        $("#feed").append(renderGamePost(gameData));
+    })
  }
  
  $(function() {
