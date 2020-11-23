@@ -87,7 +87,7 @@ const renderLoginForm = function() {
     function handleLoginButton(email, password) {
         firebase.auth().signInWithEmailAndPassword(email, password)
   .then((user) => { 
-      //renderGames();  
+    //   renderGames();  
     homePage();
   })
   .catch((error) => {
@@ -206,18 +206,20 @@ function homePage(){
 }
 
 //Save users to firebase
-async function saveUsers(email, password, first_name, last_name){
-   const user = await firebase.auth().createUserWithEmailAndPassword(email, password);
-        console.log("here")
-        const uid = user.uid;
-        console.log(user);
-        const profile = {}
-        profile.firstName = first_name;
-        profile.lastName = last_name;
-        profile.email = email;
-        await usersCollection.doc(uid).set(profile)
-        // renderGames();
-        homePage()
+async function saveUsers(email, password, first_name, last_name) {
+      const result = await firebase
+        .auth()
+        .createUserWithEmailAndPassword(email, password);
+      console.log("here");
+      const user = result.user;
+      const uid = user.uid;
+      const profile = {};
+      profile.firstName = first_name;
+      profile.lastName = last_name;
+      profile.email = email;
+      await usersCollection.doc(uid).set(profile);
+      // renderGames();
+      homePage()
     }
 
 $(function() {
