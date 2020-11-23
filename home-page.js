@@ -166,45 +166,29 @@ const loadIntoDom = async function (gameData) {
     games.forEach(game => {
         const gameData = game.data();
         const gameTime = gameData.gameTime;
-        const gameDate = new Date(gameData.gameDate);
+        const gameDate = gameData.gameDate;
         const location = gameData.location;
         const name = gameData.name;
         const numPlayers = gameData.numPlayers;
         const skillSelect = gameData.skillSelect;
         const sportSelect = gameData.sportSelect;
-
-    // if(gameData.length > 0) {
-    //     $("#no-games-message").toggle();
-    //     for(let i=0; i < gameData.length; i++) {
-    //         $("#feed").append(renderGamePost(gameData[i]));
-    //     }
-    //     for(let i=0; i < gameData.length; i++) {
-    //         $("#feed").append(renderGamePost(gameData[i]));
-    //     }
-    // }
-
-//     $(".navbar-burger").on("click", function() {
-//         $(".navbar-burger").toggleClass("is-active");
-//         $(".navbar-menu").toggleClass("is-active");
-//     });
-//  }
         $("#feed").append(renderGamePost(gameData));
         })
         }
 
-        // function renderGames(){
-        //     games.forEach(game => {
-        //         const gameData = game.data();
-        //         const gameTime = gameData.gameTime;
-        //         const gameDate = gameData.gameDate;
-        //         const location = gameData.location;
-        //         const name = gameData.name;
-        //         const numPlayers = gameData.numPlayers;
-        //         const skillSelect = gameData.skillSelect;
-        //         const sportSelect = gameData.sportSelect;
-        //         $("#feed").append(renderGamePost(gameData));
-        // })
-        // }
+        function renderGames(){
+            games.forEach(game => {
+                const gameData = game.data();
+                const gameTime = gameData.gameTime;
+                const gameDate = gameData.gameDate;
+                const location = gameData.location;
+                const name = gameData.name;
+                const numPlayers = gameData.numPlayers;
+                const skillSelect = gameData.skillSelect;
+                const sportSelect = gameData.sportSelect;
+                $("#feed").append(renderGamePost(gameData));
+        })
+        }
  
  $(function() {
      loadIntoDom();

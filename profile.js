@@ -1,4 +1,55 @@
-const renderProfile = function (bio, skill_level, sports) {
+
+
+var firebaseConfig = {
+    apiKey: "AIzaSyB71fFfvD1D85MLOw7HhNknoLjCP55Gu5s",
+    authDomain: "piccup-f339d.firebaseapp.com",
+    databaseURL: "https://piccup-f339d.firebaseio.com",
+    projectId: "piccup-f339d",
+    storageBucket: "piccup-f339d.appspot.com",
+    messagingSenderId: "1042044087440",
+    appId: "1:1042044087440:web:0e3885ce7ef972f83c3c15",
+    measurementId: "G-TKHRW9XMW2"
+  };
+  firebase.initializeApp(firebaseConfig);
+
+  let user;
+
+  firebase.auth().onAuthStateChanged(async function(userResult) {
+    if (userResult) {
+        user = userResult;
+        const renderedProfile = await renderProfile();
+        console.log(renderedProfile)
+        $("#profile-container").append(renderedProfile);
+      // User is signed in.
+    } else {
+        // No user is signed in.
+      }
+    });
+
+  const getCurProfile = async () => {
+      const uid = user.uid;
+      console.log(uid)
+      if (uid) {
+        const profRef = firebase.firestore().collection('users').doc(uid);
+        const profile = await profRef.get();
+        if(profile.exists){
+          return profile.data();
+          }
+      }
+      return null;
+        
+  }
+
+const renderProfile = async function () {
+    const profile = await getCurProfile();
+    console.log(profile);
+    let first_name = profile.firstName;
+    let last_name = profile.lastName;
+    let bio = profile.bio;
+    let skill_level = profile.skillLevel
+    let sports = profile.sports;
+    let games_played = profile.gamesPlayed;
+
     if (bio == null) {
         bio = "You have not set up a bio yet. If you would like to add a bio, please press the edit profile button."
     }
@@ -6,7 +57,10 @@ const renderProfile = function (bio, skill_level, sports) {
         skill_level = "Beginner"
     }
     if (sports == null) {
-        sports = ""
+        sports = '';
+    }
+    if (games_played == undefined) {
+        games_played == "0"
     }
     skill_level = skill_level[0].toUpperCase() + skill_level.slice(1);
     let profile_card = document.createElement('div');
@@ -23,13 +77,13 @@ const renderProfile = function (bio, skill_level, sports) {
                         </figure>
                     </div>
                     <div class="media-content">
-                        <p class="title is-3 has-text-primary">First Last</p>
+                        <p class="title is-3 has-text-primary">${first_name} ${last_name}</p>
                     </div>
                 </div>
             </div>
             <div class="column profile-column-left has-text-centered">
                 <p class="subtitle">Games played</p>
-                <p class="title is-1 attribute-value">8</p>
+                <p class="title is-1 attribute-value">${games_played}</p>
             </div>
             <div class="column profile-column has-text-centered">
                 <p class="subtitle">Overall Skill Level</p>
@@ -79,6 +133,12 @@ const renderErrorEditForm = function () {
         </p>
     </div>
     <form>
+        <div class="field" id="games-played">
+            <div class="control">
+                <label class="subtitle">Games Played:</label>
+                <input class="input is-medium" placeholder="Enter how many games you have played." >
+            </div>
+        </div>
         <div class="field" id="overall-skill-level">
             <div class="control">
                 <label class="subtitle">Overall Skill Level:</label>
@@ -89,18 +149,8 @@ const renderErrorEditForm = function () {
         </div>
         <div class="field" id="sports">
             <div class="control">
-                <label class="subtitle">Sports:</label>
-                <p class="subtitle sports-label">Add a sport:</p>
-                <div class="select">
-                    <select class="my-select">
-                    <option value="Football">Football</option>
-                    <option value="Basketball">Basketball</option>
-                    <option value="Football">Soccer</option>
-                    <option value="Tennis">Tennis</option>
-                    <option value="Volleyball">Volleyball</option>
-                    <option value="Volleyball">Tennis</option>
-                    </select>
-                </div>
+                <label class="subtitle">What sports do you enjoy?:</label>
+                <input class="input is-medium" placeholder="Ex.) Football, Basketball, and soccer"
             </div>
         </div>
         <div class="field" id="bio">
@@ -126,15 +176,17 @@ const renderErrorEditForm = function () {
     button_container.appendChild(clear_button);
     
     sign_up_form.getElementsByClassName('submit-button')[0].addEventListener('click', function () {
-        let skill_level = sign_up_form.getElementsByClassName("input")[0].value;
-        let sports = sign_up_form.getElementsByClassName("my-select")[0].value;
-        let bio = sign_up_form.getElementsByClassName("input")[1].value;
-        handleSignUpSubmitButton(skill_level, sports, bio, sign_up_form);
+        let games_played = sign_up_form.getElementsByClassName("input")[0].value;
+        let skill_level = sign_up_form.getElementsByClassName("input")[1].value;
+        let sports = sign_up_form.getElementsByClassName("input")[2].value;
+        let bio = sign_up_form.getElementsByClassName("input")[3].value;
+        handleSignUpSubmitButton(games_played, skill_level, sports, bio, sign_up_form);
     })
     sign_up_form.getElementsByClassName('clear-button')[0].addEventListener('click', function () {
         sign_up_form.getElementsByClassName("input")[0].value = '';
         sign_up_form.getElementsByClassName("input")[1].value = '';
         sign_up_form.getElementsByClassName("input")[2].value = '';
+        sign_up_form.getElementsByClassName("input")[3].value = '';
         
     })
     sign_up_form.getElementsByClassName('edit-profile-close-button')[0].addEventListener('click', () => {
@@ -158,6 +210,12 @@ const renderEditProfileForm = function (sports, skill_level, bio) {
         </p>
     </div>
     <form>
+        <div class="field" id="games-played">
+            <div class="control">
+                <label class="subtitle">Games Played:</label>
+                <input class="input is-medium" placeholder="Enter how many games you have played." >
+            </div>
+        </div>
         <div class="field" id="overall-skill-level">
             <div class="control">
                 <label class="subtitle">Overall Skill Level:</label>
@@ -166,17 +224,8 @@ const renderEditProfileForm = function (sports, skill_level, bio) {
         </div>
         <div class="field" id="sports">
             <div class="control">
-                <p class="subtitle sports-label">Add a sport:</p>
-                <div class="select">
-                    <select class="my-select">
-                        <option value="Football">Football</option>
-                        <option value="Basketball">Basketball</option>
-                        <option value="Football">Soccer</option>
-                        <option value="Tennis">Tennis</option>
-                        <option value="Volleyball">Volleyball</option>
-                        <option value="Volleyball">Tennis</option>
-                    </select>
-                </div>
+                <label class="subtitle">What sports do you enjoy?:</label>
+                <input class="input is-medium" placeholder="Ex.) Football, Basketball, and Soccer"
             </div>
         </div>
         <div class="field" id="bio">
@@ -202,11 +251,11 @@ const renderEditProfileForm = function (sports, skill_level, bio) {
     button_container.appendChild(clear_button);
     
     sign_up_form.getElementsByClassName('submit-button')[0].addEventListener('click', function () {
-        let skill_level = sign_up_form.getElementsByClassName("input")[0].value;
-        let sports = sign_up_form.getElementsByClassName("my-select")[0].value;
-        let bio = sign_up_form.getElementsByClassName("input")[1].value;
-        console.log(sports)
-        handleSignUpSubmitButton(skill_level, sports, bio, sign_up_form);
+        let games_played = sign_up_form.getElementsByClassName("input")[0].value;
+        let skill_level = sign_up_form.getElementsByClassName("input")[1].value;
+        let sports = sign_up_form.getElementsByClassName("input")[2].value;
+        let bio = sign_up_form.getElementsByClassName("input")[3].value;
+        handleSignUpSubmitButton(games_played, skill_level, sports, bio, sign_up_form);
     })
     sign_up_form.getElementsByClassName('clear-button')[0].addEventListener('click', function () {
         sign_up_form.getElementsByClassName("input")[0].value = '';
@@ -221,20 +270,28 @@ const renderEditProfileForm = function (sports, skill_level, bio) {
     return sign_up_form;
 }
 
-const updateProfile = function (bio, skill_level, sports) {
-    $("#profile-container").empty()
-    $("#profile-container").append(renderProfile(bio, skill_level, sports));
+const updateProfile = async function (games_played, bio, skill_level, sports) {
+    const uid = user.uid;
+    await firebase.firestore().collection('users').doc(uid).update({
+        gamesPlayed: games_played,
+        bio,
+        skillLevel: skill_level,
+        sports
+    })
+    // $("#profile-container").empty()
+    // $("#profile-container").append(renderProfile());
+    reloadPage();
 }
 
-const handleSignUpSubmitButton = function (skill_level, sports, bio, form) {
+const handleSignUpSubmitButton = function (games_played, skill_level, sports, bio, form) {
     if (skill_level.toLowerCase().localeCompare("beginner") == 0) {
-        updateProfile(bio, skill_level, sports);
+        updateProfile(games_played, bio, skill_level, sports);
         form.remove();
     } else if (skill_level.toLowerCase().localeCompare("intermediate") == 0) {
-        updateProfile(bio, skill_level, sports);
+        updateProfile(games_played, bio, skill_level, sports);
         form.remove();
     } else if (skill_level.toLowerCase().localeCompare("expert") == 0) {
-        updateProfile(bio, skill_level, sports);
+        updateProfile(games_played, bio, skill_level, sports);
         form.remove();
     } else {
         form.remove();
@@ -243,9 +300,12 @@ const handleSignUpSubmitButton = function (skill_level, sports, bio, form) {
     
 }
 
+function reloadPage(){
+    window.location.href='./profile.html'
+}
 
 const loadIntoDom = function (bio) {
-    $("#profile-container").append(renderProfile(bio));
+    // $("#profile-container").append(renderProfile(bio));
  }
  
  $(function() {
