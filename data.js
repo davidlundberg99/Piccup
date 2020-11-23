@@ -1,0 +1,27 @@
+const dummyGames = [{
+    name: "SXFL Championship",
+    location: "Central park",
+    gameDate: new Date(),
+    gameTime: '13:00:00',
+    numPlayers: 10,
+    sportSelect: "football",
+    skillSelect: "beginner",
+},
+{
+    name: "Cleat Clash",
+    location: "Hargraves Park",
+    gameDate: new Date(),
+    gameTime: '4:15:00',
+    numPlayers: 8,
+    sportSelect: "soccer",
+    skillSelect: "intermediate",
+},
+{
+    name: "Hoop Sesh",
+    location: "Dean Dome",
+    gameDate: new Date(),
+    gameTime: '19:30:00',
+    numPlayers: 4,
+    sportSelect: "basketball",
+    skillSelect: "expert",
+}];

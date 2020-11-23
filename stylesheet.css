@@ -14,27 +14,50 @@ html {
     display: block;
     margin: auto;
 }
+
+.navbar-brand{
+    height: 6rem;
+}
+
+
+
 .login-button {
     margin-bottom: 6px;
 }
 
 #game-form-container {
-    vertical-align: center;
+    align-items: center;
     font-size: calc(10px + 1vmin);
-    margin: 20px 120px;
 }
 
+#game-form-button {
+    align-self: center;
+    width: 100%;
+    margin-top: 10px;
+    resize: vertical;
+    margin-bottom: 10px;
+    font-size: calc(10px + 1vmin);
+}
+#homepage-columns {
+    width: 90vmin;
+    margin: 20px auto;
+}
+
+#feed {
+    overflow-y: scroll;
+    max-height: 60vh;
+}
 
 input[type=submit] {
     align-self: center;
-    width: 75%;
+    width: 100%;
     margin-top: 10px;
     resize: vertical;
     margin-bottom: 10px;
     font-size: calc(10px + 1vmin);
   }
   
-input[type=text], input[type=number], input[type=date], input[type=time], select, textarea {
+input[type=text], input[type=number], input[type=date], input[type=time], select, textarea{
   width: 100%;
   padding: 10px;
   margin-top: 10px;
@@ -42,9 +65,28 @@ input[type=text], input[type=number], input[type=date], input[type=time], select
   font-size: calc(10px + 1vmin);
 }
 
-.apply-button {
+#filter-container {
+    width: 90vmin;
+    margin: auto;
+    text-align: center;
+}
+
+#header {
+    margin: 50px;
+}
+
+.game-card {
+    margin: 20px;
+}
+
+.dd-button, .dropdown, .dropdown-trigger {
+    font-size: 25px;
+}
+
+.apply-button, .clear-button {
     margin-left: 5px;
     margin-right: 4px;
+    font-size: 25px;
 }
 .close-button {
     position: relative; left: 260px; bottom: 15px;
@@ -108,3 +150,11 @@ input[type=text], input[type=number], input[type=date], input[type=time], select
 .sports-label {
     position: relative; top: 12px;
 }
+.card-header {
+    padding: 20px 20px 0px;
+}
+
+#navbar {
+    background-image: none;
+}
+

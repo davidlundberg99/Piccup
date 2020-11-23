@@ -168,9 +168,10 @@ const renderEditProfileForm = function (sports, skill_level, bio) {
                     <select class="my-select">
                         <option value="Football">Football</option>
                         <option value="Basketball">Basketball</option>
-                        <option value="Football">Brazil</option>
-                        <option value="Tennis">Chile</option>
+                        <option value="Football">Soccer</option>
+                        <option value="Tennis">Baseball</option>
                         <option value="Volleyball">Volleyball</option>
+                        <option value="Volleyball">Tennis</option>
                     </select>
                 </div>
             </div>

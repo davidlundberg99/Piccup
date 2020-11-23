@@ -10,9 +10,8 @@ var gamePost = {
 
 export const renderGameForm = function() {
     let gameForm = document.createElement('div');
-    gameForm.classList.add("container");
     gameForm.classList.add("has-text-centered");
-    gameForm.innerHTML=`<form id="game-form">
+    gameForm.innerHTML=`<form id="game-form" class="box">
     <h2>Post a Game</h2>
     <input type="text" name="name" placeholder="Name" /><br>
     <input type="text" name="location" placeholder="Location" /><br>
@@ -40,38 +39,56 @@ export const renderGameForm = function() {
       <option value="intermediate">Intermediate</option>
       <option value="expert">Expert</option>
     </select><br>
-    <input class="button is-rounded submit-buttom" type="submit" name="Submit" />
+    <input class="button is-block submit-button is-primary" type="submit" name="Submit" />
   </form>
 `;
     return gameForm;
 }
 
-export const renderGamePost = function (post) {
-    return `<div class='card'>
-    <p>${post.name} ${post.location}  ${post.date}</p>
-    </div>`
-}
 
 export const handleGameFormSubmit = function (event) {
     event.preventDefault();
     gamePost.name = $("#game-form").serializeArray()[0].value;
     gamePost.location = $("#game-form").serializeArray()[1].value;
-    gamePost.gameDate = $("#game-form").serializeArray()[2].value;
+    gamePost.gameDate = new Date($("#game-form").serializeArray()[2].value);
     gamePost.gameTime = $("#game-form").serializeArray()[3].value;
     gamePost.sportSelect = $('#game-form').serializeArray()[4].value;
     gamePost.numPlayers = $("#game-form").serializeArray()[5].value;
     gamePost.skillSelect = $("#game-form").serializeArray()[6].value;
+    if($("#no-games-message").is(':visible')) {
+        $("#no-games-message").toggle();
+    }
+    $('#feed').prepend(renderGamePost(gamePost));
 }
 
-// const loadIntoDom = function () {
-//     $("#game-form-container").append(renderGameForm());
-//     $(document).on("submit", "form", handleGameFormSubmit);
-// }
-
-// const postToFeed = (post) => {
-//     $('#feed').append(renderGamePost(post));
-// }
-
-// $(function() {
-//     loadIntoDom();
-// });
+export const renderGamePost = function (post) {
+    let sportName = post.sportSelect.charAt(0).toUpperCase() + post.sportSelect.slice(1);
+    let skillLevel = post.skillSelect.charAt(0).toUpperCase() + post.skillSelect.slice(1);
+    let gameTimeInt = parseInt(post.gameTime.substring(0, 2));
+    return `<div class="card game-card">
+    <header class="card-header">
+        <figure class="image is-96x96">
+        <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+        </figure>
+        <p class="title card-header-title">
+            <span>
+            <a>Sam Lempp </a> <br>
+            ${sportName} Game: ${post.name}
+            </span>
+        </p><br>
+        <figure class="image is-96x96">
+        <img src="./sport-logos/${post.sportSelect}.png" alt="Placeholder image">
+        </figure>
+    </header>
+    <div class="card-content is-size-3">
+        <strong> Location:  </strong> ${post.location}<br> 
+        <strong>Time: </strong>  ${gameTimeInt > 12 ? (gameTimeInt - 12) + post.gameTime.substring(2,5) + " PM" : post.gameTime + " AM"} <br>
+        <strong>Date: </strong> ${post.gameDate.getUTCMonth() + 1}/${post.gameDate.getUTCDate()}/${post.gameDate.getFullYear()}<br>
+        <strong>Players: </strong> ${post.numPlayers}<br>
+        <strong>Skill Level: </strong> ${skillLevel} <br>
+    </div>
+    <footer class="card-footer">
+        <button class="button is-primary card-footer-item is-size-3">Join Game</button>
+    </footer>
+    </div>`
+    }
