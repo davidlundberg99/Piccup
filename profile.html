@@ -11,17 +11,26 @@
 <body style="background-image: linear-gradient(to right,#008470,#00d1b2)" class="has-navbar-fixed-top">
     <section class="hero is-bold" id="header">
         <nav class="navbar has-background-white is-fixed-top">
-            <a href="./homepage.html">
-            <img class="navbar-brand" src="./logo-small.svg"/>
-            </a>
-            <div class="navbar-end">
-                <a class= "navbar-item is-size-4" href ="./homepage.html">
-                    Home
+            <div class="navbar-brand">
+                <a href="./homepage.html">
+                    <img class="nav-logo" src="./logo-small.svg"/>
                 </a>
-                <a class= "navbar-item is-size-4 has-text-white has-background-danger" href ="./">
+                <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarMenu">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                </a>
+            </div>
+            <div id="navbarMenu" class="navbar-menu">
+            <div class="navbar-end">
+                <a class= "navbar-item" href ="./homepage.html">
+                    <p>Home</p>
+                </a>
+                <a class= "navbar-item has-text-white has-background-danger" href ="./">
                     Log Out
                 </a>
             </div>
+        </div>
         </nav>
         <div class="hero-body is-small">
             <div class="container">

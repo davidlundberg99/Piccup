@@ -67,20 +67,20 @@ export const renderGamePost = function (post) {
     let gameTimeInt = parseInt(post.gameTime.substring(0, 2));
     return `<div class="card game-card">
     <header class="card-header">
-        <figure class="image is-96x96">
+        <figure class="image is-48x48">
         <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
         </figure>
-        <p class="title card-header-title">
+        <p class="card-header-title">
             <span>
             <a>Sam Lempp </a> <br>
             ${sportName} Game: ${post.name}
             </span>
         </p><br>
-        <figure class="image is-96x96">
+        <figure class="image is-48x48">
         <img src="./sport-logos/${post.sportSelect}.png" alt="Placeholder image">
         </figure>
     </header>
-    <div class="card-content is-size-3">
+    <div class="card-content">
         <strong> Location:  </strong> ${post.location}<br> 
         <strong>Time: </strong>  ${gameTimeInt > 12 ? (gameTimeInt - 12) + post.gameTime.substring(2,5) + " PM" : post.gameTime + " AM"} <br>
         <strong>Date: </strong> ${post.gameDate.getUTCMonth() + 1}/${post.gameDate.getUTCDate()}/${post.gameDate.getFullYear()}<br>
@@ -88,7 +88,7 @@ export const renderGamePost = function (post) {
         <strong>Skill Level: </strong> ${skillLevel} <br>
     </div>
     <footer class="card-footer">
-        <button class="button is-primary card-footer-item is-size-3">Join Game</button>
+        <button class="button is-primary card-footer-item is-size-8">Join Game</button>
     </footer>
     </div>`
     }

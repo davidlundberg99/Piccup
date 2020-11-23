@@ -15,8 +15,8 @@ html {
     margin: auto;
 }
 
-.navbar-brand{
-    height: 6rem;
+.nav-logo{
+    height: 3rem;
 }
 
 
@@ -57,13 +57,13 @@ input[type=submit] {
     font-size: calc(10px + 1vmin);
   }
   
-input[type=text], input[type=number], input[type=date], input[type=time], select, textarea{
-  width: 100%;
-  padding: 10px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  font-size: calc(10px + 1vmin);
-}
+  input[type=text], input[type=number], input[type=date], input[type=time], select, textarea{
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: calc(10px + 1vmin);
+  }
 
 #filter-container {
     width: 90vmin;
@@ -71,22 +71,19 @@ input[type=text], input[type=number], input[type=date], input[type=time], select
     text-align: center;
 }
 
-#header {
-    margin: 50px;
-}
 
 .game-card {
     margin: 20px;
 }
 
 .dd-button, .dropdown, .dropdown-trigger {
-    font-size: 25px;
+    font-size: 15px;
 }
 
 .apply-button, .clear-button {
     margin-left: 5px;
     margin-right: 4px;
-    font-size: 25px;
+    font-size: 15px;
 }
 .close-button {
     position: relative; left: 260px; bottom: 15px;
@@ -139,9 +136,6 @@ input[type=text], input[type=number], input[type=date], input[type=time], select
     position: relative; left: 315px;
 }
 
-.navbar-buttons {
-    position: relative; left: 1200px;
-}
 
 .my-select {
     position: relative; bottom: 18px;

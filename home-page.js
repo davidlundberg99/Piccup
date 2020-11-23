@@ -27,7 +27,7 @@ const renderFilterBar = function () {
     filter_form.classList.add("container");
    // filter_form.classList.add("has-text-centered");
     filter_form.innerHTML = `
-            <div class="subtitle has-text-grey is-3 has-text-centered">Filter</div>
+            <div class="subtitle has-text-grey is-4 has-text-centered">Filter</div>
             <div class="dropdown">
                 <div class="dropdown is-hoverable">
                     <div class="dropdown-trigger">
@@ -151,7 +151,12 @@ const loadIntoDom = function (gameData) {
         for(let i=0; i < gameData.length; i++) {
             $("#feed").append(renderGamePost(gameData[i]));
         }
-    }   
+    }
+
+    $(".navbar-burger").on("click", function() {
+        $(".navbar-burger").toggleClass("is-active");
+        $(".navbar-menu").toggleClass("is-active");
+    });
  }
  
  $(function() {
