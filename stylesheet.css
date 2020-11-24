@@ -162,6 +162,11 @@ input[type=submit] {
 
 }
 
+.filter-apply-clear-field {
+    position: relative;
+    bottom: 30px; left: 400px;
+}
+
 .apply {
     position: relative; right: 130px;
     margin-top: 10px;

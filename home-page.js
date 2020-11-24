@@ -35,7 +35,9 @@ const renderFilterBar = function () {
     filter_form.classList.add("container");
    // filter_form.classList.add("has-text-centered");
     filter_form.innerHTML = `
-            <div class="subtitle has-text-grey is-3 has-text-centered">Filter</div>
+            <div class="subtitle has-text-grey is-3 has-text-centered">
+                Filter
+            </div>
             <div class="select filter-dropdown filter-sport">
                 <select>
                     <option>Sport</option>
@@ -46,7 +48,7 @@ const renderFilterBar = function () {
                     <option>Tennis</option>
                     <option>Volleyball</option>
                 </select>
-          </div>
+            </div>
             <div class="select filter-dropdown">
                 <select>
                     <option>Skill Level</option>
@@ -57,13 +59,13 @@ const renderFilterBar = function () {
             </div>
             <div class="time" id="filter-time-box">
                 <div class="control">
-                    <label class="subtitle is-5">Start Time:</label>
-                    <input style="width: 125px"class="input filter-time-input" type="time">
-                </div>
-                <div class="field is-grouped">
-                <div class="control apply is-grouped"></div>
-                </div>
+                    <label>Start Time:
+                    <input style="width: 100px"class="input filter-time-input" type="time">
+                    </label>
+                 </div>
             </div>
+            <div class="field is-grouped filter-apply-clear-field">
+                <div class="control apply is-grouped"></div>
             </div>
     `
     //Create buttons and apend them
