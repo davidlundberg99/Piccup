@@ -138,7 +138,6 @@ input[type=submit] {
     position: relative; left: 315px;
 }
 
-
 .my-select {
     position: relative; bottom: 18px;
 }
@@ -159,7 +158,8 @@ input[type=submit] {
 }
 
 .filter-dropdown {
-    position: relative; right: 100px;
+    position: relative; right: 100px; bottom: 10px;
+
 }
 
 .apply {
@@ -168,5 +168,14 @@ input[type=submit] {
 }
 
 .filter-time-input {
-    position: relative; bottom: 5px;
+    position: relative; bottom: 7px;
+    height: 37px;
+}
+
+.filter-sport {
+    margin-right: 7px;
+}
+
+.participants-close-button{
+    position: relative; bottom: 15px; left: 235px;
 }
