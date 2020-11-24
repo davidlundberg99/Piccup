@@ -84,7 +84,7 @@ export const renderGamePost = function (post) {
     return `<div class="card game-card">
     <header class="card-header">
         <figure class="image is-48x48">
-        <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+        <img src="./blank_profile.png" alt="Placeholder image">
         </figure>
         <p class="card-header-title">
             <span >

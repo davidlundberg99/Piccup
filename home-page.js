@@ -92,10 +92,10 @@ const renderFilterBar = function () {
                     </div>
                 </div>
             </div>
-            <div class="field" id="filter-time-box">
+            <div class="time" id="filter-time-box">
                 <div class="control">
                     <label class="subtitle is-5">Start Time:</label>
-                    <input style="width: 125px"class="input filter-time-input" placeholder="ex.)12:00pm">
+                    <input style="width: 125px"class="input filter-time-input" type="time">
                 </div>
                 <div class="field is-grouped">
                 <div class="control apply is-grouped"></div>
