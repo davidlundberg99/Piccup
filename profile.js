@@ -12,6 +12,7 @@ var firebaseConfig = {
 
   let user;
 
+
   firebase.auth().onAuthStateChanged(async function(userResult) {
     if (userResult) {
         user = userResult;
