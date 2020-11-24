@@ -117,9 +117,11 @@ const loadIntoDom = async function () {
     $(document).on("click", "#log-out-button", handleLogOutButton);
     var games = await gamesCollection.get();
     
-    games.forEach(game => {
+    games.forEach(async game => {
         const gameData = game.data();
         var gamePost = {
+                afirst: gameData.afirst,
+                alast: gameData.alast,
                 name: gameData.name,
                 location: gameData.location,
                 gameDate: new Date(gameData.gameDate),
@@ -128,7 +130,8 @@ const loadIntoDom = async function () {
                 sportSelect: gameData.sportSelect,
                 skillSelect: gameData.skillSelect,
             };
-        $("#feed").append(renderGamePost(gamePost));
+        const theGamePost = await renderGamePost(gamePost);
+        $("#feed").append(theGamePost)
         })
         if($("#no-games-message").is(':visible')) {
             $("#no-games-message").toggle();
@@ -140,5 +143,5 @@ const loadIntoDom = async function () {
     }
 
  $(function() {
-     loadIntoDom();
+    loadIntoDom();
  });
