@@ -1,3 +1,5 @@
+import{getUserInfo} from "./user-info.js"
+
 var firebaseConfig = {
   apiKey: "AIzaSyB71fFfvD1D85MLOw7HhNknoLjCP55Gu5s",
   authDomain: "piccup-f339d.firebaseapp.com",
@@ -9,9 +11,12 @@ var firebaseConfig = {
   measurementId: "G-TKHRW9XMW2"
 };
 // Initialize Firebase
-firebase.initializeApp(firebaseConfig);
+if (!firebase.apps.length) {
+  firebase.initializeApp({});
+}
 
 const gamesCollection = firebase.firestore().collection('games')
+
 
 
 // var gamePost = {
@@ -61,11 +66,14 @@ export const renderGameForm = function() {
     return gameForm;
 }
 
-
 export const handleGameFormSubmit = async function (event) {
     event.preventDefault();
     console.log("submitted");
-    const gamePost = {}
+    const profile = await getUserInfo();
+    const gamePost = {};
+    gamePost.afirst = profile.firstName;
+    gamePost.alast = profile.lastName;
+    console.log(gamePost.alast);
     gamePost.name = $("#game-form").serializeArray()[0].value;
     gamePost.location = $("#game-form").serializeArray()[1].value;
     gamePost.gameDate = $("#game-form").serializeArray()[2].value;
@@ -75,9 +83,10 @@ export const handleGameFormSubmit = async function (event) {
     gamePost.skillSelect = $("#game-form").serializeArray()[6].value;
     
     await gamesCollection.add(gamePost);
+    window.location.href='./homepage.html'
 }
 
-export const renderGamePost = function (post) {
+export const renderGamePost = async function (post) {
     let sportName = post.sportSelect.charAt(0).toUpperCase() + post.sportSelect.slice(1);
     let skillLevel = post.skillSelect.charAt(0).toUpperCase() + post.skillSelect.slice(1);
     let gameTimeInt = parseInt(post.gameTime.substring(0, 2));
@@ -90,12 +99,12 @@ export const renderGamePost = function (post) {
         </figure>
         <p class="card-header-title">
             <span >
-            <a>Sam Lempp </a><br>
+            <a>${post.afirst} ${post.alast}</a><br>
             <span class=""><strong>${sportName} Game: ${post.name}</strong></span><br>
             </span>
         </p>
         <figure class="image is-48x48">
-        <img src="./sport-logos/${post.sportSelect}.png" alt="Placeholder image">
+        <img src="./sport-logos/${post.sportSelect.toLowerCase()}.png" alt="Placeholder image">
         </figure>
     </header>
     <div class="card-content">
@@ -111,28 +120,53 @@ export const renderGamePost = function (post) {
     </div>`
 
     game_card.getElementsByClassName("join-button")[0].addEventListener('click', () => {
-      console.log("button was pressed");
-      let join_button = game_card.getElementsByClassName("join-button")[0]
-      let joined_button = document.createElement('button')
-      joined_button.className = "button is-danger is-fullwidth join-button"
-      joined_button.innerHTML = `Joined`
-      console.log(join_button.innerHTML);
-      if (join_button.innerHTML == "Join Game") {
-        join_button.replaceWith(joined_button);
-      } 
-    })
-    return game_card
-    }
+            console.log("button was pressed");
+            let join_button = game_card.getElementsByClassName("join-button")[0]
+            let joined_button = document.createElement('button')
+            joined_button.className = "button is-danger is-fullwidth join-button"
+            joined_button.innerHTML = `Joined`
+            console.log(join_button.innerHTML);
+            if (join_button.innerHTML == "Join Game") {
+              join_button.replaceWith(joined_button);
+            } 
+          })
+          return game_card
+          }
 
-// export const handleJoinButton = function (game_card) {
-//   if ( $(".join-button").html() == "Join Game") {
-//     $(".join-button").removeClass("is-primary");
-//     $(".join-button").addClass("is-danger");
-//     $(".join-button").html("Joined");
-//   } else {
-//     $(".join-button").removeClass("is-danger");
-//     $(".join-button").addClass("is-primary");
-//     $(".join-button").html("Join Game");
-//   }
+    // export const handleJoinButton = async function (game_card) {
+    //   if ( $(".join-button").html() == "Join Game") {
+    //       $(".join-button").removeClass("is-primary");
+    //       $(".join-button").addClass("is-danger");
+    //       $(".join-button").html("Joined");
+    //     } else {
+    //       $(".join-button").removeClass("is-danger");
+    //       $(".join-button").addClass("is-primary");
+    //       $(".join-button").html("Join Game");
+    //     }
+    //   }
+
+// export const handleParticipantsButton = function () {
+//   $("#root").append(renderParticipantsForm());
+
 // }
 
+
+// export const renderParticipantsForm = function () {
+//   let participants_form = document.createElement('div');
+//   participants_form.className = "modal is-active";
+//   participants_form.innerHTML = `
+//   <div class = "modal-background"></div>
+//     <div class = "modal-content">
+//     <div class = "modal-content">
+//         <div class = "box">
+//         <div class = "content">
+//         <p class = "title is-4 has-text-centered sign-up-header">Participants
+//             <button class="delete participants-close-button"></button>
+//         </p>
+//     </div>
+//   `
+//   participants_form.getElementsByClassName('delete')[0].addEventListener('click', () => {
+//     participants_form.remove();
+//   })
+//   return participants_form;
+// }
