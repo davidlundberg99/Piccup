@@ -104,7 +104,7 @@ export const renderGamePost = async function (post) {
             </span>
         </p>
         <figure class="image is-48x48">
-        <img src="./sport-logos/${post.sportSelect}.png" alt="Placeholder image">
+        <img src="./sport-logos/${post.sportSelect.toLowerCase()}.png" alt="Placeholder image">
         </figure>
     </header>
     <div class="card-content">
