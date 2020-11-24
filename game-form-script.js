@@ -86,7 +86,7 @@ export const renderGamePost = function (post) {
     game_card.innerHTML = `<div class="card game-card">
     <header class="card-header">
         <figure class="image is-48x48">
-        <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+        <img src="./blank_profile.png" alt="Placeholder image">
         </figure>
         <p class="card-header-title">
             <span >
@@ -141,7 +141,7 @@ export const renderParticipantsForm = function () {
             <button class="delete participants-close-button"></button>
         </p>
         <div class="content'>
-          
+
         </div>
     </div>
 
