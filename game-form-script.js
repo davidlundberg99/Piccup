@@ -140,7 +140,11 @@ export const renderParticipantsForm = function () {
         <p class = "title is-4 has-text-centered sign-up-header">Participants
             <button class="delete participants-close-button"></button>
         </p>
+        <div class="content'>
+          
+        </div>
     </div>
+
   `
   participants_form.getElementsByClassName('delete')[0].addEventListener('click', () => {
     participants_form.remove();
