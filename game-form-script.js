@@ -108,46 +108,31 @@ export const renderGamePost = function (post) {
     <footer class="card-footer">
         <button class="button is-primary card-footer-item is-size join-button">Join Game</button>
     </footer>
-      <button class="button is-info is-fullwidth is-size participants-button">Participants</button>
     </div>`
 
     game_card.getElementsByClassName("join-button")[0].addEventListener('click', () => {
-      handleJoinButton();
-    })
-    game_card.getElementsByClassName("participants-button")[0].addEventListener('click', () => {
-      handleParticipantsButton();
+      console.log("button was pressed");
+      let join_button = game_card.getElementsByClassName("join-button")[0]
+      let joined_button = document.createElement('button')
+      joined_button.className = "button is-danger is-fullwidth join-button"
+      joined_button.innerHTML = `Joined`
+      console.log(join_button.innerHTML);
+      if (join_button.innerHTML == "Join Game") {
+        join_button.replaceWith(joined_button);
+      } 
     })
     return game_card
     }
 
-export const handleJoinButton = function () {
-  alert("You have joined the game.");
-}
+// export const handleJoinButton = function (game_card) {
+//   if ( $(".join-button").html() == "Join Game") {
+//     $(".join-button").removeClass("is-primary");
+//     $(".join-button").addClass("is-danger");
+//     $(".join-button").html("Joined");
+//   } else {
+//     $(".join-button").removeClass("is-danger");
+//     $(".join-button").addClass("is-primary");
+//     $(".join-button").html("Join Game");
+//   }
+// }
 
-export const handleParticipantsButton = function () {
-  $("#root").append(renderParticipantsForm());
-}
-
-export const renderParticipantsForm = function () {
-  let participants_form = document.createElement('div');
-  participants_form.className = "modal is-active";
-  participants_form.innerHTML = `
-  <div class = "modal-background"></div>
-    <div class = "modal-content">
-    <div class = "modal-content">
-        <div class = "box">
-        <div class = "content">
-        <p class = "title is-4 has-text-centered sign-up-header">Participants
-            <button class="delete participants-close-button"></button>
-        </p>
-        <div class="content'>
-
-        </div>
-    </div>
-
-  `
-  participants_form.getElementsByClassName('delete')[0].addEventListener('click', () => {
-    participants_form.remove();
-  })
-  return participants_form;
-}

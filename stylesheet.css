@@ -162,9 +162,12 @@ input[type=submit] {
 
 }
 
-.apply {
-    position: relative; right: 130px;
-    margin-top: 10px;
+/* .filter-select {
+    margin-top: 40px;
+} */
+
+.filter {
+    margin-top: 23px;
 }
 
 .filter-time-input {

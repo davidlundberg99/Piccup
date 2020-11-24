@@ -35,36 +35,40 @@ const renderFilterBar = function () {
     filter_form.classList.add("container");
    // filter_form.classList.add("has-text-centered");
     filter_form.innerHTML = `
-            <div class="subtitle has-text-grey is-3 has-text-centered">Filter</div>
-            <div class="select filter-dropdown filter-sport">
-                <select>
-                    <option>Sport</option>
-                    <option>Baseball</option>
-                    <option>Basketball</option>
-                    <option>Football</option>
-                    <option>Soccer</option>
-                    <option>Tennis</option>
-                    <option>Volleyball</option>
-                </select>
-          </div>
-            <div class="select filter-dropdown">
-                <select>
-                    <option>Skill Level</option>
-                    <option>Beginner</option>
-                    <option>Intermediate</option>
-                    <option>Expert</option>
-                </select>
-            </div>
-            <div class="field" id="filter-time-box">
-                <div class="control">
-                    <label class="subtitle is-6">Start Time:</label>
-                    <input style="width: 125px"class="input filter-time-input" placeholder="ex.) 12:00pm">
-                </div>
-                <div class="field is-grouped">
-                <div class="control apply is-grouped"></div>
-                </div>
-            </div>
-            </div>
+    <p class = "subtitle has-text-grey is-3 has-text-centered">Filter</p>
+<div class="columns">
+    <div class="column">
+        <div class="select filter-select">
+            <select>
+                <option>Sport</option>
+                <option>Baseball</option>
+                <option>Basketball</option>
+                <option>Football</option>
+                <option>Soccer</option>
+                <option>Tennis</option>
+                <option>Volleyball</option>
+            </select>
+        </div>
+    </div>
+    <div class="column">
+        <div class="select filter-select">
+            <select>
+                <option>Skill Level</option>
+                <option>Beginner</option>
+                <option>Intermediate</option>
+                <option>Expert</option>
+            </select>
+        </div>
+    </div>
+<div class="field filter">
+    <div class="control">
+        <label class="subtitle is-6">Start Time:</label>
+        <input class="input" style="width: 120px" placeholder="ex.) 12:00pm">
+    </div>
+</div>
+<div class="field is-grouped filter">
+        <div class="control apply is-grouped"></div>
+</div>
     `
     //Create buttons and apend them
     let button_container = filter_form.getElementsByClassName('apply')[0];
