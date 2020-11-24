@@ -1,5 +1,13 @@
 import {renderGameForm, handleGameFormSubmit, renderGamePost} from "./game-form-script.js";
 
+const gamesCollection = firebase.firestore().collection('games')
+
+  const getGames = async () => {
+      const games = await gamesCollection.get();
+      return games;
+  }
+
+
 const renderGameFormButton = function() {
     let game_form_button = document.createElement('button');
     game_form_button.id = "game-form-button";
@@ -120,25 +128,48 @@ const handleFilterApplyButton = function () {
     alert("Apply button was pressed");
 }
 
-const loadIntoDom = function (gameData) {
+const handleLogOutButton = function() {
+    firebase.auth().signOut().then(function() {
+        window.location.href='./index.html'
+      }).catch(function(error) {
+        console.log("An error occurred")
+      });
+}
+
+// renderGames();
+
+const loadIntoDom = async function () {
     $("#filter-container").append(renderFilterBar());
     $("#game-form-container").append(renderGameForm());
     $("#game-form-container").append(renderGameFormButton());
     $("#game-form").hide();
     $(document).on("click", "#game-form-button", handleGameFormButton);
     $(document).on("submit", "#game-form", handleGameFormSubmit);
+    $(document).on("click", "#log-out-button", handleLogOutButton);
+    var games = await gamesCollection.get();
     
-    if(gameData.length > 0) {
-        $("#no-games-message").toggle();
-        for(let i=0; i < gameData.length; i++) {
-            $("#feed").append(renderGamePost(gameData[i]));
+    games.forEach(game => {
+        const gameData = game.data();
+        var gamePost = {
+                name: gameData.name,
+                location: gameData.location,
+                gameDate: new Date(gameData.gameDate),
+                gameTime: gameData.gameTime,
+                numPlayers: gameData.numPlayers,
+                sportSelect: gameData.sportSelect,
+                skillSelect: gameData.skillSelect,
+            };
+        $("#feed").append(renderGamePost(gamePost));
+        })
+        if($("#no-games-message").is(':visible')) {
+            $("#no-games-message").toggle();
         }
-        for(let i=0; i < gameData.length; i++) {
-            $("#feed").append(renderGamePost(gameData[i]));
-        }
-    }   
- }
- 
+        $(".navbar-burger").on("click", function() {
+        $(".navbar-burger").toggleClass("is-active");
+        $(".navbar-menu").toggleClass("is-active");
+        });
+    }
+
  $(function() {
-     loadIntoDom(dummyGames);
+     loadIntoDom();
  });

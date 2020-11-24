@@ -10,7 +10,7 @@ html {
     margin-top: 20px;
 }
 #logo {
-    height: 10vmin;
+    height: 8vmin;
     display: block;
     margin: auto;
 }
@@ -19,7 +19,9 @@ html {
     height: 3rem;
 }
 
-
+.hero-body {
+padding: 2rem;
+}
 
 .login-button {
     margin-bottom: 6px;
