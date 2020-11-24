@@ -36,61 +36,24 @@ const renderFilterBar = function () {
    // filter_form.classList.add("has-text-centered");
     filter_form.innerHTML = `
             <div class="subtitle has-text-grey is-3 has-text-centered">Filter</div>
-            <div class="dropdown">
-                <div class="dropdown is-hoverable filter-dropdown">
-                    <div class="dropdown-trigger">
-                        <button class="button dd-button" aria-haspopup="true" aria-controls="dropdown-menu4">
-                            <span>Select Sport</span>
-                            <span class="icon is-small">
-                            <i class="fas fa-angle-down"></i>
-                            </span>
-                        </button>
-                    </div>
-                    <div class="dropdown-menu" id="dropdown-menu4" role="menu">
-                        <div class="dropdown-content">
-                            <a class="dropdown-item option-1">
-                                Football
-                            </a>
-                            <a class="dropdown-item option-2">
-                                Basketball
-                            </a>
-                            <a class="dropdown-item option-3">
-                                Soccer
-                            </a>
-                            <a class="dropdown-item option-4">
-                                Tennis
-                            </a>
-                            <a class="dropdown-item option-3">
-                                Volleyball
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="dropdown">
-                <div class="dropdown is-hoverable filter-dropdown">
-                    <div class="dropdown-trigger">
-                        <button class="button dd-button" aria-haspopup="true" aria-controls="dropdown-menu4">
-                            <span>Select Skill Level</span>
-                            <span class="icon is-small">
-                                <i class="fas fa-angle-down" aria-hidden="true"></i>
-                            </span>
-                        </button>
-                    </div>
-                    <div class="dropdown-menu" id="dropdown-menu4" role="menu">
-                        <div class="dropdown-content">
-                            <a class="dropdown-item filter-skill-1">
-                                Beginner
-                            </a>
-                            <a class="dropdown-item filter-skill-2">
-                                Intermediate
-                            </a>
-                            <a class="dropdown-item filter-skill-3">
-                                Expert
-                            </a>
-                        </div>
-                    </div>
-                </div>
+            <div class="select filter-dropdown filter-sport">
+                <select>
+                    <option>Sport</option>
+                    <option>Baseball</option>
+                    <option>Basketball</option>
+                    <option>Football</option>
+                    <option>Soccer</option>
+                    <option>Tennis</option>
+                    <option>Volleyball</option>
+                </select>
+          </div>
+            <div class="select filter-dropdown">
+                <select>
+                    <option>Skill Level</option>
+                    <option>Beginner</option>
+                    <option>Intermediate</option>
+                    <option>Expert</option>
+                </select>
             </div>
             <div class="time" id="filter-time-box">
                 <div class="control">
@@ -114,6 +77,10 @@ const renderFilterBar = function () {
     clear_button.innerHTML=`Clear`;
     button_container.appendChild(clear_button);
     //TODO: Handle button presses
+    // filter_form.getElementsByClassName('sport-option-1')[0].addEventListener('click', () => {
+    //     let temp = filter_form.getElementsByClassName('sport-option-1');
+    //     console.log(temp)
+    // })
     filter_form.getElementsByClassName('apply-button')[0].addEventListener('click', () => {
         let time = filter_form.getElementsByClassName('input')[0].value;
         handleFilterApplyButton(time);

@@ -81,7 +81,9 @@ export const renderGamePost = function (post) {
     let sportName = post.sportSelect.charAt(0).toUpperCase() + post.sportSelect.slice(1);
     let skillLevel = post.skillSelect.charAt(0).toUpperCase() + post.skillSelect.slice(1);
     let gameTimeInt = parseInt(post.gameTime.substring(0, 2));
-    return `<div class="card game-card">
+    let game_card = document.createElement('div');
+    game_card.classList.add("container");
+    game_card.innerHTML = `<div class="card game-card">
     <header class="card-header">
         <figure class="image is-48x48">
         <img src="./blank_profile.png" alt="Placeholder image">
@@ -104,7 +106,44 @@ export const renderGamePost = function (post) {
         <strong>Skill Level: </strong> ${skillLevel} <br>
     </div>
     <footer class="card-footer">
-        <button class="button is-primary card-footer-item is-size-">Join Game</button>
+        <button class="button is-primary card-footer-item is-size join-button">Join Game</button>
     </footer>
+      <button class="button is-info is-fullwidth is-size participants-button">Participants</button>
     </div>`
+
+    game_card.getElementsByClassName("join-button")[0].addEventListener('click', () => {
+      handleJoinButton();
+    })
+    game_card.getElementsByClassName("participants-button")[0].addEventListener('click', () => {
+      handleParticipantsButton();
+    })
+    return game_card
     }
+
+export const handleJoinButton = function () {
+  alert("You have joined the game.");
+}
+
+export const handleParticipantsButton = function () {
+  $("#root").append(renderParticipantsForm());
+}
+
+export const renderParticipantsForm = function () {
+  let participants_form = document.createElement('div');
+  participants_form.className = "modal is-active";
+  participants_form.innerHTML = `
+  <div class = "modal-background"></div>
+    <div class = "modal-content">
+    <div class = "modal-content">
+        <div class = "box">
+        <div class = "content">
+        <p class = "title is-4 has-text-centered sign-up-header">Participants
+            <button class="delete participants-close-button"></button>
+        </p>
+    </div>
+  `
+  participants_form.getElementsByClassName('delete')[0].addEventListener('click', () => {
+    participants_form.remove();
+  })
+  return participants_form;
+}
