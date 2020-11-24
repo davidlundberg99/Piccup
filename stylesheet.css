@@ -154,3 +154,19 @@ input[type=submit] {
     background-image: none;
 }
 
+#filter-time-box {
+    position: relative; bottom: 30px; left: 400px;
+}
+
+.filter-dropdown {
+    position: relative; right: 100px;
+}
+
+.apply {
+    position: relative; right: 130px;
+    margin-top: 10px;
+}
+
+.filter-time-input {
+    position: relative; bottom: 5px;
+}

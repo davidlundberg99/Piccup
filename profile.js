@@ -1,5 +1,3 @@
-
-
 var firebaseConfig = {
     apiKey: "AIzaSyB71fFfvD1D85MLOw7HhNknoLjCP55Gu5s",
     authDomain: "piccup-f339d.firebaseapp.com",
@@ -100,7 +98,6 @@ const renderProfile = async function () {
             <p class ="subtitle is-5 bio">${bio}</p>
         </div>
         <div class="control edit-button">
-
         </div>
     </div>
 </div>
@@ -113,12 +110,12 @@ const renderProfile = async function () {
     button_container.append(edit_profile_button)
     //handle edit button press
     profile_card.getElementsByClassName('edit-profile-button')[0].addEventListener('click', () => {
-        $("#root").append(renderEditProfileForm(sports, skill_level, bio));
+        $("#root").append(renderEditProfileForm(games_played, sports, skill_level, bio));
     })
     return profile_card;
 }
 
-const renderErrorEditForm = function () {
+const renderErrorEditForm = function (games_played, sports, skill_level, bio) {
     //console.log("edit form should be rendered")
     let sign_up_form = document.createElement('div');
     sign_up_form.className = 'modal is-active';
@@ -176,10 +173,18 @@ const renderErrorEditForm = function () {
     button_container.appendChild(clear_button);
     
     sign_up_form.getElementsByClassName('submit-button')[0].addEventListener('click', function () {
-        let games_played = sign_up_form.getElementsByClassName("input")[0].value;
-        let skill_level = sign_up_form.getElementsByClassName("input")[1].value;
-        let sports = sign_up_form.getElementsByClassName("input")[2].value;
-        let bio = sign_up_form.getElementsByClassName("input")[3].value;
+        if (sign_up_form.getElementsByClassName("input")[0].value !== "") {
+            games_played = sign_up_form.getElementsByClassName("input")[0].value;
+       } 
+       if (sign_up_form.getElementsByClassName("input")[1].value !== "" ) {
+           skill_level = sign_up_form.getElementsByClassName("input")[1].value;
+       }
+       if (sign_up_form.getElementsByClassName("input")[2].value !== "") {
+           sports = sign_up_form.getElementsByClassName("input")[2].value;
+       }
+       if (sign_up_form.getElementsByClassName("input")[3].value !== "") {
+           bio = sign_up_form.getElementsByClassName("input")[3].value;
+       }
         handleSignUpSubmitButton(games_played, skill_level, sports, bio, sign_up_form);
     })
     sign_up_form.getElementsByClassName('clear-button')[0].addEventListener('click', function () {
@@ -195,7 +200,7 @@ const renderErrorEditForm = function () {
     return sign_up_form;
 }
 
-const renderEditProfileForm = function (sports, skill_level, bio) {
+const renderEditProfileForm = function (games_played, sports, skill_level, bio) {
     console.log("button was pressed")
     let sign_up_form = document.createElement('div');
     sign_up_form.className = 'modal is-active';
@@ -251,10 +256,19 @@ const renderEditProfileForm = function (sports, skill_level, bio) {
     button_container.appendChild(clear_button);
     
     sign_up_form.getElementsByClassName('submit-button')[0].addEventListener('click', function () {
-        let games_played = sign_up_form.getElementsByClassName("input")[0].value;
-        let skill_level = sign_up_form.getElementsByClassName("input")[1].value;
-        let sports = sign_up_form.getElementsByClassName("input")[2].value;
-        let bio = sign_up_form.getElementsByClassName("input")[3].value;
+        // checks to make sure only to update if values are inputted.
+        if (sign_up_form.getElementsByClassName("input")[0].value !== "") {
+             games_played = sign_up_form.getElementsByClassName("input")[0].value;
+        } 
+        if (sign_up_form.getElementsByClassName("input")[1].value !== "" ) {
+            skill_level = sign_up_form.getElementsByClassName("input")[1].value;
+        }
+        if (sign_up_form.getElementsByClassName("input")[2].value !== "") {
+            sports = sign_up_form.getElementsByClassName("input")[2].value;
+        }
+        if (sign_up_form.getElementsByClassName("input")[3].value !== "") {
+            bio = sign_up_form.getElementsByClassName("input")[3].value;
+        }
         handleSignUpSubmitButton(games_played, skill_level, sports, bio, sign_up_form);
     })
     sign_up_form.getElementsByClassName('clear-button')[0].addEventListener('click', function () {
@@ -295,7 +309,7 @@ const handleSignUpSubmitButton = function (games_played, skill_level, sports, bi
         form.remove();
     } else {
         form.remove();
-        $("#root").append(renderErrorEditForm());   
+        $("#root").append(renderErrorEditForm(games_played, sports, skill_level, bio));   
     }
     
 }
