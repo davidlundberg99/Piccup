@@ -83,7 +83,7 @@ export const handleGameFormSubmit = async function (event) {
     gamePost.skillSelect = $("#game-form").serializeArray()[6].value;
     
     await gamesCollection.add(gamePost);
-    // window.location.href='./homepage.html'
+    window.location.href='./homepage.html'
 }
 
 export const renderGamePost = async function (post) {
