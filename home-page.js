@@ -60,14 +60,17 @@ const renderFilterBar = function () {
             </select>
         </div>
     </div>
-<div class="field filter">
+<div class="column">
+<div class="field filter-input">
     <div class="control">
-        <label class="subtitle is-6">Start Time:</label>
-        <input class="input" style="width: 120px" placeholder="ex.) 12:00pm">
+        <input class="input" type="time" style="width: 140px; height:35px;" placeholder="ex.) 12:00pm">
     </div>
 </div>
+</div>
+<div class = "column">
 <div class="field is-grouped filter">
         <div class="control apply is-grouped"></div>
+</div>
 </div>
     `
     //Create buttons and apend them
