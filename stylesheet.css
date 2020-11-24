@@ -167,8 +167,10 @@ input[type=submit] {
 } */
 
 .filter {
-    margin-top: 23px;
+    margin-top: 12px;
 }
+
+
 
 .filter-time-input {
     position: relative; bottom: 7px;
